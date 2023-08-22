@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  name: MyString
+  logo_url: MyString
+  post_code: MyString
+  prefecture: one
+  city: one
+  address: MyString
+  phone_number: MyString
+  fax_number: MyString
+  open_time: MyString
+  holiday: MyString
+  catch_copy: MyString
+  integerroduction: MyString
+
+two:
+  company: two
+  name: MyString
+  logo_url: MyString
+  post_code: MyString
+  prefecture: two
+  city: two
+  address: MyString
+  phone_number: MyString
+  fax_number: MyString
+  open_time: MyString
+  holiday: MyString
+  catch_copy: MyString
+  integerroduction: MyString

@@ -1,0 +1,61 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assessment_user: one
+  city: one
+  store: one
+  address: MyString
+  property: MyString
+  num_sale: 1
+  date_considered: 2023-08-22
+  date_assessment: 2023-08-22
+  start_sale: 2023-08-22
+  end_sale: 2023-08-22
+  date_handover: 2023-08-22
+  score_speed: 1
+  price_assessment: 1
+  price_sale: 1
+  is_discount: false
+  discount_n_month_later: 1
+  price_discount: 1
+  price_contract: 1
+  score_contract: 1
+  contract_type: 1
+  headline: MyString
+  reason_sale: MyString
+  anxiety: MyString
+  reason_decision: MyString
+  score_store: 1
+  reason_score: MyString
+  advice: MyString
+  improvement: MyString
+
+two:
+  assessment_user: two
+  city: two
+  store: two
+  address: MyString
+  property: MyString
+  num_sale: 1
+  date_considered: 2023-08-22
+  date_assessment: 2023-08-22
+  start_sale: 2023-08-22
+  end_sale: 2023-08-22
+  date_handover: 2023-08-22
+  score_speed: 1
+  price_assessment: 1
+  price_sale: 1
+  is_discount: false
+  discount_n_month_later: 1
+  price_discount: 1
+  price_contract: 1
+  score_contract: 1
+  contract_type: 1
+  headline: MyString
+  reason_sale: MyString
+  anxiety: MyString
+  reason_decision: MyString
+  score_store: 1
+  reason_score: MyString
+  advice: MyString
+  improvement: MyString

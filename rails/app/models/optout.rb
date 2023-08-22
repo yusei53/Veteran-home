@@ -1,0 +1,2 @@
+class Optout < ApplicationRecord
+end
