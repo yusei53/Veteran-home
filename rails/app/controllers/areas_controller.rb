@@ -1,5 +1,5 @@
-class AreasController < ApplicationController
+# frozen_string_literal: true
 
-    def show
-    end
+class AreasController < ApplicationController
+  def show; end
 end
