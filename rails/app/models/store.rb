@@ -3,5 +3,4 @@ class Store < ApplicationRecord
   belongs_to :city
   has_many :city, dependent: :destroy, through: :assessment_area
   has_many :original_review
-  has_many :public_review
 end
