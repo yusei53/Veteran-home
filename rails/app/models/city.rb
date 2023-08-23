@@ -7,4 +7,6 @@ class City < ApplicationRecord
   has_many :original_reviews, dependent: :nullify
   has_many :assessment_areas, dependent: :destroy
   has_many :stores, dependent: :nullify, through: :assessment_areas
+
+  validates :name, :yomi, presence: true
 end
