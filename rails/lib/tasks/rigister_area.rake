@@ -13,7 +13,7 @@ namespace :register_area do
         for idx in (0..csv_length-1) do
             prefecture_record={
                 name: csv_data["name"][idx],
-                ieul_id: csv_data["id"][idx].to_i
+                prefecture_id: csv_data["id"][idx].to_i
             }
             prefecture_records.push(
                 prefecture_record
@@ -35,7 +35,7 @@ namespace :register_area do
         for idx in (0..csv_length-1) do
             city_record={
                 name: csv_data["name"][idx],
-                ieul_id: csv_data["id"][idx].to_i,
+                city_id: csv_data["id"][idx].to_i,
                 prefecture_id: Prefecture.find_by(ieul_id:csv_data["prefecture_id"][idx]).id,
                 yomi: csv_data["yomi"][idx]
             }
