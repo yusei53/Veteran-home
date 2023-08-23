@@ -1,5 +1,4 @@
 class CreateCities < ActiveRecord::Migration[7.0]
-  ## done
   def change
     create_table :cities do |t|
       t.references :prefecture, null: false, foreign_key: true
