@@ -46,6 +46,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.2.0)
+      activesupport (>= 5.0.0)
     activejob (7.0.6)
       activesupport (= 7.0.6)
       globalid (>= 0.3.6)
@@ -91,6 +93,8 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    daru (0.3)
+      packable (~> 1.3.13)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -146,6 +150,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
+    packable (1.3.18)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -293,9 +298,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_hash
   bootsnap
   bootstrap-sass (= 3.4.1)
   capybara
+  daru
   debug
   importmap-rails
   jbuilder
@@ -303,6 +310,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.6)
+  rake
   rspec-rails
   rubocop-rails
   rubocop-rspec
