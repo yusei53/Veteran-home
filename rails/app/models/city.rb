@@ -6,5 +6,5 @@ class City < ApplicationRecord
   has_many :public_reviews, dependent: :nullify
   has_many :original_reviews, dependent: :nullify
   has_many :assessment_areas, dependent: :destroy
-  has_many :stores,dependent: :nullify,through: :assessment_areas
+  has_many :stores, dependent: :nullify, through: :assessment_areas
 end
