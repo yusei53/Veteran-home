@@ -5,7 +5,7 @@ class CreateOriginalReviews < ActiveRecord::Migration[7.0]
       t.bigint :property_city_id, null: false, index: true
       t.references :store, null: false, foreign_key: true
       t.string :property_address, null:false
-      t.integer :property, null: false #物件種別
+      t.integer :property, null: false ,comment: "物件種別"
       t.integer :num_sale, null: false , comment: "売却回数は選択肢"
       t.date :date_considered,null: false
       t.date :date_assessment,null: false
@@ -16,7 +16,7 @@ class CreateOriginalReviews < ActiveRecord::Migration[7.0]
       t.integer :price_assessment, null: false
       t.integer :price_sale, null: false
       t.boolean :is_discount, null: false
-      t.integer :discount_n_month_later, comment: "売り出してから何ヶ月後に値下げしたか null OK"
+      t.integer :discount_n_month_later, comment: "売り出してから何ヶ月後に値下げしたか"
       t.integer :price_discount 
       t.integer :price_contract, null: false
       t.integer :score_contract, null: false

@@ -16,7 +16,7 @@ class CreateLatestReviews < ActiveRecord::Migration[7.0]
       t.integer :price_assessment, null: false
       t.integer :price_sale, null: false
       t.boolean :is_discount, null: false, default: false
-      t.integer :discount_n_month_later, comment: "売り出してから何ヶ月後に値下げしたか null OK"
+      t.integer :discount_n_month_later, comment: "売り出してから何ヶ月後に値下げしたか"
       t.integer :price_discount 
       t.integer :price_contract, null: false
       t.integer :score_contract, null: false
