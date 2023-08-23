@@ -6,7 +6,7 @@ namespace :register_area do
     desc "Register prefecture"
     task :prefecture => :environment do
 
-        csv_data=Daru::DataFrame.from_csv("resources/住所マスタ - 都道府県.csv")
+        csv_data=Daru::DataFrame.from_csv("csv/住所マスタ - 都道府県.csv")
 
         prefecture_records=[]
         csv_length=csv_data.nrows
@@ -28,7 +28,7 @@ namespace :register_area do
     desc "Register city"
     task :city=>:environment do
         
-        csv_data=Daru::DataFrame.from_csv("resources/住所マスタ - 市区町村.csv")
+        csv_data=Daru::DataFrame.from_csv("csv/住所マスタ - 市区町村.csv")
 
         city_records=[]
         csv_length=csv_data.nrows
