@@ -80,4 +80,4 @@ group :test do
 end
 
 # 男、女などの選択肢を0,1として持つactive_record導入のため
-gem "actice_record"
+gem 'active_hash'
