@@ -5,5 +5,5 @@ class City < ApplicationRecord
   has_many :original_reviews
   has_many :stores
   has_many :assessment_areas
-  has_many :stores, dependent: :destroy, through: :assessment_area 
+  has_many :stores, dependent: :destroy, through: :assessment_areas 
 end
