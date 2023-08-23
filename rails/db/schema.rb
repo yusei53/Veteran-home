@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_122860) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_122862) do
   create_table "assessment_areas", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "store_id", null: false
     t.bigint "city_id", null: false
@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122860) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prefcture_id"
+    t.integer "prefecture_id"
   end
 
   create_table "public_reviews", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
