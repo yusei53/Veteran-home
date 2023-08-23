@@ -43,40 +43,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122857) do
 
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
+    t.bigint "ieul_company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "latest_reviews", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.bigint "original_review_id", null: false
-    t.string "property_address", null: false
-    t.integer "property", null: false, comment: "物件種別"
-    t.integer "num_sale", null: false, comment: "売却回数は選択肢"
-    t.date "date_considered", null: false
-    t.date "date_assessment", null: false
-    t.date "start_sale", null: false
-    t.date "end_sale", null: false
-    t.date "date_handover", null: false
-    t.integer "score_speed", null: false
-    t.integer "price_assessment", null: false
-    t.integer "price_sale", null: false
-    t.boolean "is_discount", default: false, null: false
-    t.integer "discount_n_month_later", comment: "売り出してから何ヶ月後に値下げしたか"
-    t.integer "price_discount"
-    t.integer "price_contract", null: false
-    t.integer "score_contract", null: false
-    t.integer "contract_type", null: false
-    t.string "headline", null: false
-    t.integer "reason_sale", null: false, comment: "売却理由は選択肢"
-    t.string "anxiety", null: false
-    t.string "reason_decision", null: false
-    t.integer "score_store", null: false, comment: "対応満足度"
-    t.string "reason_score", null: false
-    t.string "advice", null: false
-    t.string "improvement"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["original_review_id"], name: "index_latest_reviews_on_original_review_id"
   end
 
   create_table "original_reviews", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -155,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122857) do
   create_table "stores", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "city_id", null: false
+    t.bigint "ieul_store_id"
     t.string "name"
     t.string "logo_url", null: false
     t.string "post_code"
@@ -175,7 +145,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122857) do
   add_foreign_key "assessment_areas", "stores"
   add_foreign_key "assessment_users", "original_reviews"
   add_foreign_key "cities", "prefectures"
-  add_foreign_key "latest_reviews", "original_reviews"
   add_foreign_key "original_reviews", "cities", column: "property_city_id"
   add_foreign_key "original_reviews", "stores"
   add_foreign_key "public_reviews", "original_reviews"
