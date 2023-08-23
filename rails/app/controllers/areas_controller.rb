@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 class AreasController < ApplicationController
-  def show; end
+  def show
+    @store = Store.find(params[:id])
+end
 end
