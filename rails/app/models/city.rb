@@ -1,9 +1,9 @@
 class City < ApplicationRecord
   belongs_to :prefecture
-  has_many :assessment_user
-  has_many :public_review
-  has_many :original_review
-  has_many :store
-  has_many :assessment_area
-  has_many :store, dependent: :destroy, through: :assessment_area 
+  has_many :assessment_users
+  has_many :public_reviews
+  has_many :original_reviews
+  has_many :stores
+  has_many :assessment_areas
+  has_many :stores, dependent: :destroy, through: :assessment_area 
 end
