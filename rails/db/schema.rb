@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_122862) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_122863) do
   create_table "assessment_areas", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "store_id", null: false
     t.bigint "city_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122862) do
     t.boolean "is_received", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender_id"
     t.index ["original_review_id"], name: "index_assessment_users_on_original_review_id"
   end
 
