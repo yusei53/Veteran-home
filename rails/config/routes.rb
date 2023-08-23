@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  mount KomachiHeartbeat::Engine => "/ops"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :areas, :stores, :reviews, only: [:show]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
