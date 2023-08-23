@@ -1,2 +1,0 @@
-class Optout < ApplicationRecord
-end

@@ -1,4 +1,4 @@
-class LatestReview < ApplicationRecord
+class PublicReview < ApplicationRecord
   has_one :original_review, dependent: :destroy
   belongs_to :assessment_user
   belongs_to :city

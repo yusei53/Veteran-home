@@ -1,9 +1,8 @@
-class CreateLatestReviews < ActiveRecord::Migration[7.0]
+class CreatePublicReviews < ActiveRecord::Migration[7.0]
   def change
-    create_table :latest_reviews do |t|
-      t.references :assessment_user, null: false, foreign_key: true
-      t.bigint :property_city_id, null: false, index: true
-      t.references :store, null: false, foreign_key: true
+    create_table :public_reviews do |t|
+      t.references :original_review, null: false, foreign_key: true
+
       t.string :property_address, null:false
       t.integer :property, null: false , comment: "物件種別"
       t.integer :num_sale, null: false , comment: "売却回数は選択肢"
@@ -32,6 +31,5 @@ class CreateLatestReviews < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_foreign_key :latest_reviews, :cities, column: :property_city_id
   end
 end

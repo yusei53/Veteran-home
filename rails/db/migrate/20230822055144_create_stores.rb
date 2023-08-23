@@ -3,9 +3,6 @@ class CreateStores < ActiveRecord::Migration[7.0]
     create_table :stores do |t|
       t.references :company, null: false, foreign_key: true
       t.references :city, null: false, foreign_key: true
-      t.references :assessment_area, foreign_key: true
-      t.references :original_review, foreign_key: true
-      t.references :latest_review, foreign_key: true
       t.string :name
       t.string :logo_url, null: false
       t.string :post_code
