@@ -78,3 +78,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+# 男、女などの選択肢を0,1として持つactive_record導入のため
+gem "actice_record"
