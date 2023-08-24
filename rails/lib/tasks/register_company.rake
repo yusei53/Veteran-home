@@ -19,14 +19,13 @@ namespace :register_company do
         name: csv_data['企業名'][idx]
       }
       p record
-      Company.create!(record)
+      Company.find_or_create_by!(record)
     end
     p '===END Register Company==='
     # << 企業の登録 <<
 
     # >> 店舗の登録 >>
     p '===START Register Store==='
-    store_records = []
     (0..csv_length - 1).each do |idx|
       record = {
         company_id: Company.find_by!(name: csv_data['企業名'][idx]).id,
@@ -43,11 +42,10 @@ namespace :register_company do
         catch_copy: csv_data['キャッチコピー'][idx],
         introduction: csv_data['紹介文'][idx]
       }
-      store_records.push(record)
+      Store.find_or_create_by!(record)
       p record
       p '------------------'
     end
-    Store.create!(store_records)
     p '===END Register Store==='
     # << 店舗の登録 <<
   end
