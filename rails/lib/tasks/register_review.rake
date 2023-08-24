@@ -16,6 +16,20 @@ namespace :register_review do
     pb = ProgressBar.create(total: csv_length)
 
     (0..csv_length - 1).each do |idx|
+      user_record = {
+        name: csv_data['名前'][idx],
+        yomi: nil,
+        gender_id: Gender.find_by(name: csv_data['性別'][idx]).id,
+        age: csv_data['年齢'][idx].to_i,
+        email: nil,
+        city_id: nil, # ここはアンケート結果 (reviewerの住んでる市)
+        address: nil, # ここもアンケート結果 (reviewerの住んでる詳しい住所)
+        assessment_request_date: csv_data['査定依頼時期'][idx].to_date,
+        is_received: false,
+      }
+      user=AssessmentUser.create!(user_record)
+      p user
+
       review_record = {
         property_city_id: City.find_by(name: csv_data['市区町村'][idx]).id, # Cityからとってくる
         store_id: Store.find_by(ieul_store_id: csv_data['ieul_店舗id'][idx]).id, # Storeから取ってくる
@@ -43,7 +57,8 @@ namespace :register_review do
         score_store: csv_data['不動産会社の対応満足度'][idx].to_i,
         reason_score: csv_data['不動産会社の対応満足度の理由'][idx],
         advice: csv_data['今後売却する人へのアドバイス'][idx],
-        improvement: csv_data['不動産会社に改善してほしい点'][idx]
+        improvement: csv_data['不動産会社に改善してほしい点'][idx],
+        assessment_user_id: user.id
       }
 
       review = OriginalReview.create!(review_record)
@@ -77,26 +92,12 @@ namespace :register_review do
         improvement: csv_data['不動産会社に改善してほしい点'][idx]
       }
 
-      user_record = {
-        name: csv_data['名前'][idx],
-        yomi: nil,
-        gender_id: Gender.find_by(name: csv_data['性別'][idx]).id,
-        age: csv_data['年齢'][idx].to_i,
-        email: nil,
-        city_id: nil, # ここはアンケート結果 (reviewerの住んでる市)
-        address: nil, # ここもアンケート結果 (reviewerの住んでる詳しい住所)
-        assessment_request_date: csv_data['査定依頼時期'][idx].to_date,
-        is_received: false,
-        original_review_id: review.id
-      }
-
       assessment_area_record = {
         store_id: Store.find_by(ieul_store_id: csv_data['ieul_店舗id'][idx]).id,
         city_id: City.find_by(name: csv_data['市区町村'][idx]).id
       }
 
       PublicReview.create!(public_record)
-      AssessmentUser.create!(user_record)
       AssessmentArea.create!(assessment_area_record)
 
       pb.increment
