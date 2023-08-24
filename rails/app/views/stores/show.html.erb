@@ -6,4 +6,27 @@
 <img src="<%= @store.logo_url %>" alt="店舗Image">
 
 <div><%= @store.name %></div>
-<div><%= @store.name %></div>
+<div>total score <%=@score_total%></div>
+<div>score contract<%=@score_contract%></div>
+<div>score store<%=@score_store%></div>
+<div>score speed<%=@score_speed%></div>
+
+<%= @public_reviews.each do |review|%>
+    <div><%= review.headline %></div>
+    <div>対応満足度<%= review.score_contract %></div>
+    <div><%= review.reason_score%></div>
+    <div>成約価格<%= review.price_contract%></div>
+    <div><%= review.original_review.city.name%> <%= review.original_review.property_address%></div>
+    <div><%=review.date_handover.strftime("%Y年 %m月")%>に引き渡し</div>
+
+    <div class="card" style="width: 90rem;">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+    </div>
+
+<% end %>
