@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_122863) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
   create_table "assessment_areas", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "store_id", null: false
     t.bigint "city_id", null: false
@@ -22,14 +22,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122863) do
 
   create_table "assessment_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.string "yomi", null: false
-    t.string "email", null: false
+    t.string "yomi"
+    t.string "email"
     t.bigint "original_review_id", null: false
     t.date "assessment_request_date", null: false
     t.boolean "is_received", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gender_id"
+    t.integer "age"
+    t.bigint "city_id"
+    t.string "address"
+    t.index ["city_id"], name: "index_assessment_users_on_city_id"
     t.index ["original_review_id"], name: "index_assessment_users_on_original_review_id"
   end
 
@@ -145,6 +149,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_122863) do
 
   add_foreign_key "assessment_areas", "cities"
   add_foreign_key "assessment_areas", "stores"
+  add_foreign_key "assessment_users", "cities"
   add_foreign_key "assessment_users", "original_reviews"
   add_foreign_key "cities", "prefectures"
   add_foreign_key "original_reviews", "cities", column: "property_city_id"
