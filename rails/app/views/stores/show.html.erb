@@ -1,6 +1,7 @@
 <div class="custom-title">
-<h1><%= @company.name %></h1>
-<h1><%= @store.name %></h1>
+<h1><%= @company.name %>
+<%= @store.name %>
+</h1>
 </div>
 
 <div class="d-flex">
@@ -43,6 +44,7 @@
 </div>
 
 
+<h4><%=@store.name%>で売却した人の口コミ （平均評価<%=@score_total%>）</h4>
 <% @public_reviews.each do |review|%>
 
 <a class="store-card" href="/reviews/<%=review.id%>">
