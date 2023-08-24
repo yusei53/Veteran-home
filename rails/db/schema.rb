@@ -74,14 +74,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
     t.integer "price_contract", null: false
     t.integer "score_contract", null: false
     t.integer "contract_type", null: false
-    t.string "headline", null: false
+    t.text "headline", null: false
     t.integer "reason_sale", null: false, comment: "売却理由は選択肢"
-    t.string "anxiety", null: false
-    t.string "reason_decision", null: false
+    t.text "anxiety", null: false
+    t.text "reason_decision", null: false
     t.integer "score_store", null: false, comment: "対応満足度"
-    t.string "reason_score", null: false
-    t.string "advice", null: false
-    t.string "improvement"
+    t.text "reason_score", null: false
+    t.text "advice", null: false
+    t.text "improvement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["property_city_id"], name: "index_original_reviews_on_property_city_id"
@@ -114,14 +114,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
     t.integer "price_contract", null: false
     t.integer "score_contract", null: false
     t.integer "contract_type", null: false
-    t.string "headline", null: false
+    t.text "headline", null: false
     t.integer "reason_sale", null: false, comment: "売却理由は選択肢"
-    t.string "anxiety", null: false
-    t.string "reason_decision", null: false
+    t.text "anxiety", null: false
+    t.text "reason_decision", null: false
     t.integer "score_store", null: false, comment: "対応満足度"
-    t.string "reason_score", null: false
-    t.string "advice", null: false
-    t.string "improvement"
+    t.text "reason_score", null: false
+    t.text "advice", null: false
+    t.text "improvement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["original_review_id"], name: "index_public_reviews_on_original_review_id"
