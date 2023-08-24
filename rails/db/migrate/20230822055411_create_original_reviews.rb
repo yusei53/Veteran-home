@@ -5,6 +5,7 @@ class CreateOriginalReviews < ActiveRecord::Migration[7.0]
     create_table :original_reviews do |t|
       t.bigint :property_city_id, null: false, index: true
       t.references :store, null: false, foreign_key: true
+      t.references :assessment_user, null: false, foreign_key: true
 
       t.string :property_address, null: false
       t.integer :property, null: false, comment: '物件種別'
