@@ -35,7 +35,6 @@ namespace :register_area do
         yomi: csv_data['yomi'][idx]
       }
       city_records.push(city_record)
-      city = City.create!(city_record)
       city=City.find_or_create_by!(city_record)
     end
   end
