@@ -8,8 +8,8 @@ class PublicReview < ApplicationRecord
 
   validates :original_review, presence: true
   validates :property_address, presence: true
-  validates :property, presence: true
-  validates :num_sale, presence: true
+  validates :property, presence: true, inclusion: { in: Property.data.keys }
+  validates :num_sale, presence: true, inclusion: { in: NumSale.data.keys }
   validates :date_considered, presence: true
   validates :date_assessment, presence: true
   validates :start_sale, presence: true
@@ -23,9 +23,9 @@ class PublicReview < ApplicationRecord
   validates :price_discount
   validates :price_contract, presence: true
   validates :score_contract, presence: true
-  validates :contract_type, presence: true
+  validates :contract_type, presence: true, inclusion: { in: ContactType.data.keys }
   validates :headline, presence: true
-  validates :reason_sale, presence: true
+  validates :reason_sale, presence: true, inclusion: { in: ReasonSale.data.keys }
   validates :anxiety, presence: true
   validates :reason_decision, presence: true
   validates :score_store, presence: true
