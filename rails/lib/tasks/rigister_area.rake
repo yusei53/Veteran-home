@@ -17,7 +17,6 @@ namespace :register_area do
       Prefecture.find_or_create_by!(prefecture_record)
       p prefecture_record
     end
-
   end
   # << 都道府県の登録 <<
 
@@ -35,7 +34,7 @@ namespace :register_area do
         yomi: csv_data['yomi'][idx]
       }
       city_records.push(city_record)
-      city=City.find_or_create_by!(city_record)
+      City.find_or_create_by!(city_record)
     end
   end
   # << 市区町村の登録 <<
