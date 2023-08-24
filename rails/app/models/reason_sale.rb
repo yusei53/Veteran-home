@@ -10,6 +10,6 @@ class ReasonSale < ActiveHash::Base
     { id: 4, name: '離婚' },
     { id: 5, name: '資産整理' },
     { id: 6, name: '金銭的な理由' },
-    {id:99, name: "その他"}
+    { id: 99, name: 'その他' }
   ]
 end
