@@ -81,8 +81,6 @@ end
 
 gem 'rake'
 
-# >> CSVを扱いやすくするため >>
 gem 'daru'
-# << CSVを扱いやすくするため <<
 
 gem 'active_hash'
