@@ -94,6 +94,8 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    daru (0.3)
+      packable (~> 1.3.13)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -149,6 +151,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
+    packable (1.3.18)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -301,6 +304,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.0.2)
   capybara
+  daru
   debug
   importmap-rails
   jbuilder
@@ -311,6 +315,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   rubocop-rspec
+  ruby-progressbar
   sassc-rails
   selenium-webdriver
   sprockets-rails

@@ -81,3 +81,9 @@ end
 
 # 男、女などの選択肢を0,1として持つactive_record導入のため
 gem 'active_hash'
+
+# csvを扱いやすくするライブラリ
+gem "daru"
+
+# ファイル保存の進捗表示
+gem "ruby-progressbar"
