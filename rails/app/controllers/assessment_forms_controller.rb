@@ -1,5 +1,3 @@
 class AssessmentFormsController < ApplicationController
-def complete
-end
-
+  def complete; end
 end
