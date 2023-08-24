@@ -77,9 +77,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (5.0.2)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.9.2, < 3)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -152,6 +153,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    popper_js (2.11.8)
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
@@ -297,7 +299,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   bootsnap
-  bootstrap-sass (= 3.4.1)
+  bootstrap (~> 5.0.2)
   capybara
   debug
   importmap-rails
