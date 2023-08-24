@@ -39,7 +39,7 @@ namespace :register_company do
         phone_number: csv_data['電話番号'][idx],
         fax_number: csv_data['FAX番号'][idx],
         open_time: csv_data['営業時間'][idx],
-        holiday: csv_data['営業時間'][idx],
+        holiday: csv_data['定休日'][idx],
         catch_copy: csv_data['キャッチコピー'][idx],
         introduction: csv_data['紹介文'][idx]
       }
