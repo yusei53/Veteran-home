@@ -24,7 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
     t.string "name", null: false
     t.string "yomi"
     t.string "email"
-    t.bigint "original_review_id", null: false
     t.date "assessment_request_date", null: false
     t.boolean "is_received", default: false, null: false
     t.datetime "created_at", null: false
@@ -34,7 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
     t.bigint "city_id"
     t.string "address"
     t.index ["city_id"], name: "index_assessment_users_on_city_id"
-    t.index ["original_review_id"], name: "index_assessment_users_on_original_review_id"
   end
 
   create_table "cities", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -57,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
   create_table "original_reviews", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "property_city_id", null: false
     t.bigint "store_id", null: false
+    t.bigint "assessment_user_id", null: false
     t.string "property_address", null: false
     t.integer "property", null: false, comment: "物件種別"
     t.integer "num_sale", null: false, comment: "売却回数は選択肢"
@@ -74,16 +73,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
     t.integer "price_contract", null: false
     t.integer "score_contract", null: false
     t.integer "contract_type", null: false
-    t.string "headline", null: false
+    t.text "headline", null: false
     t.integer "reason_sale", null: false, comment: "売却理由は選択肢"
-    t.string "anxiety", null: false
-    t.string "reason_decision", null: false
+    t.text "anxiety", null: false
+    t.text "reason_decision", null: false
     t.integer "score_store", null: false, comment: "対応満足度"
-    t.string "reason_score", null: false
-    t.string "advice", null: false
-    t.string "improvement"
+    t.text "reason_score", null: false
+    t.text "advice", null: false
+    t.text "improvement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["assessment_user_id"], name: "index_original_reviews_on_assessment_user_id"
     t.index ["property_city_id"], name: "index_original_reviews_on_property_city_id"
     t.index ["store_id"], name: "index_original_reviews_on_store_id"
   end
@@ -114,14 +114,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
     t.integer "price_contract", null: false
     t.integer "score_contract", null: false
     t.integer "contract_type", null: false
-    t.string "headline", null: false
+    t.text "headline", null: false
     t.integer "reason_sale", null: false, comment: "売却理由は選択肢"
-    t.string "anxiety", null: false
-    t.string "reason_decision", null: false
+    t.text "anxiety", null: false
+    t.text "reason_decision", null: false
     t.integer "score_store", null: false, comment: "対応満足度"
-    t.string "reason_score", null: false
-    t.string "advice", null: false
-    t.string "improvement"
+    t.text "reason_score", null: false
+    t.text "advice", null: false
+    t.text "improvement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["original_review_id"], name: "index_public_reviews_on_original_review_id"
@@ -150,8 +150,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_012834) do
   add_foreign_key "assessment_areas", "cities"
   add_foreign_key "assessment_areas", "stores"
   add_foreign_key "assessment_users", "cities"
-  add_foreign_key "assessment_users", "original_reviews"
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "original_reviews", "assessment_users"
   add_foreign_key "original_reviews", "cities", column: "property_city_id"
   add_foreign_key "original_reviews", "stores"
   add_foreign_key "public_reviews", "original_reviews"

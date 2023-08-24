@@ -316,6 +316,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   rubocop-rspec
+  ruby-progressbar
   sassc-rails
   selenium-webdriver
   sprockets-rails

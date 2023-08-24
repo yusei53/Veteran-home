@@ -84,3 +84,5 @@ gem 'rake'
 gem 'daru'
 
 gem 'active_hash'
+
+gem 'ruby-progressbar'
