@@ -17,15 +17,30 @@
 
 </div>
 
-<div class="row">
+<div class="row mt-5 mb-5">
 
-    <div class="col-md-6">
+    <div class="col-md-6 mt-5">
         <div class="store-score">
-            <div>total score <%=@score_total%></div>
-            <div>score contract<%=@score_contract%></div>
-            <div>score store<%=@score_store%></div>
-            <div>score speed<%=@score_speed%></div>
-        </div>
+            <div align="center" class="">総合評価</div>
+            <div align="center"><%=@score_total%></div>
+
+            <div class="aaa">
+            <table border="0" align="center">
+                <tr>
+                    <th>対応満足度</th>
+                    <th>売却価格</th>
+                    <th>売却スピード</th>
+                </tr>
+
+                <tr>
+                <td align="center"><%=@score_store%></td>
+                <td align="center"><%=@score_contract%></td>
+                <td align="center"><%=@score_speed%></td>
+                </tr>
+
+            </table>
+           </div>
+            </div>
     </div>
 
     <div class="col-md-6">
