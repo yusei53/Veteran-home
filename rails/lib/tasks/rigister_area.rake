@@ -33,8 +33,8 @@ namespace :register_area do
         prefecture_id: Prefecture.find_by!(prefecture_id: csv_data['prefecture_id'][idx]).id,
         yomi: csv_data['yomi'][idx]
       }
-      city_records.push(city_record)
       City.find_or_create_by!(city_record)
+      p city_record
     end
   end
   # << 市区町村の登録 <<

@@ -12,8 +12,6 @@ namespace :register_company do
     p '===START Register Company==='
     (0..csv_length - 1).each do |idx|
       # 企業がまだ登録されていない場合は登録
-      next unless Company.find_by!(name: csv_data['企業名'][idx]).nil?
-
       record = {
         ieul_company_id: csv_data['ieul_企業id'][idx].to_i,
         name: csv_data['企業名'][idx]
