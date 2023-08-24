@@ -31,7 +31,7 @@ namespace :register_review do
       # p user
 
       review_record = {
-        property_city_id: City.find_by!(name: csv_data['市区町村'][idx]).id, # Cityからとってくる
+        city_id: City.find_by!(name: csv_data['市区町村'][idx]).id, # Cityからとってくる
         store_id: Store.find_by!(ieul_store_id: csv_data['ieul_店舗id'][idx]).id, # Storeから取ってくる
         property_address: csv_data['住所全部'][idx],
         property: Property.find_by!(name: csv_data['物件種別'][idx]).id,
