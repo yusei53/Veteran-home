@@ -1,32 +1,55 @@
-<h1>企業ページ</h1>
-<div><%= @company.name %></div>
-<div><%= @store.name %></div>
-<div><%= @store.catch_copy %></div>
-<div><%= @store.introduction %></div>
-<img src="<%= @store.logo_url %>" alt="店舗Image">
+<div class="custom-title">
+<h1><%= @company.name %></h1>
+<h1><%= @store.name %></h1>
+</div>
 
-<div><%= @store.name %></div>
+<div class="d-flex">
+<div>
+<h2><%= @store.catch_copy %></h2>
+<h3><%= @store.introduction %></h3>
+</div>
+
+<div class="side-right">
+<img src="<%= @store.logo_url %>" alt="店舗Image">
+</div>
+
+
+</div>
+
+
+<div class="store-score">
 <div>total score <%=@score_total%></div>
 <div>score contract<%=@score_contract%></div>
 <div>score store<%=@score_store%></div>
 <div>score speed<%=@score_speed%></div>
+</div>
 
-<%= @public_reviews.each do |review|%>
-    <div><%= review.headline %></div>
-    <div>対応満足度<%= review.score_contract %></div>
-    <div><%= review.reason_score%></div>
-    <div>成約価格<%= review.price_contract%></div>
-    <div><%= review.original_review.city.name%> <%= review.original_review.property_address%></div>
-    <div><%=review.date_handover.strftime("%Y年 %m月")%>に引き渡し</div>
+<div class="store-detail">
+<div><%= @store.name %>について</div>
+<div>企業名：<%= @store.company.name %></div>
+<div>郵便番号：<%= @store.post_code %></div>
+<div>住所：<%= @store.city.prefecture.name %> <%= @store.city.name %> <%=@store.address%></div>
+<div>電話番号：<%= @store.phone_number %></div>
+<div>FAX：<%= @store.fax_number %></div>
+<div>営業時間：<%= @store.open_time %></div>
+<div>定休日：<%= @store.holiday %></div>
 
-    <div class="card" style="width: 90rem;">
+</div>
+
+<% @public_reviews.each do |review|%>
+
+<a class="store-card" href="/reviews/<%=review.id%>">
+    <div class="card" style="width: 80rem;">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-    </div>
-    </div>
+        <h5 class="card-title"><%= review.headline %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"> 対応満足度：<%= review.score_contract %></h6>
+        <p class="card-text"><%= review.reason_score%></p>
+        <h6 class="card-subtitle mb-2 text-muted">
+        成約価格<%= review.price_contract%> 
+        (<%=review.date_handover.strftime("%Y年 %m月")%>に引き渡し)
+        </h6>
 
+    </div>
+    </div>
+</a>
 <% end %>
