@@ -28,7 +28,7 @@ namespace :register_review do
         is_received: false,
       }
       user=AssessmentUser.create!(user_record)
-      p user
+      # p user
 
       review_record = {
         property_city_id: City.find_by(name: csv_data['市区町村'][idx]).id, # Cityからとってくる
@@ -61,6 +61,7 @@ namespace :register_review do
         assessment_user_id: user.id
       }
 
+      # p review_record
       review = OriginalReview.create!(review_record)
 
       public_record = {

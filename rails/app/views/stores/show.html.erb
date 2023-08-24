@@ -16,25 +16,32 @@
 
 </div>
 
+<div class="row">
 
-<div class="store-score">
-<div>total score <%=@score_total%></div>
-<div>score contract<%=@score_contract%></div>
-<div>score store<%=@score_store%></div>
-<div>score speed<%=@score_speed%></div>
+    <div class="col-md-6">
+        <div class="store-score">
+            <div>total score <%=@score_total%></div>
+            <div>score contract<%=@score_contract%></div>
+            <div>score store<%=@score_store%></div>
+            <div>score speed<%=@score_speed%></div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="store-detail">
+            <div><%= @store.name %>について</div>
+            <div>企業名：<%= @store.company.name %></div>
+            <div>郵便番号：<%= @store.post_code %></div>
+            <div>住所：<%= @store.city.prefecture.name %> <%= @store.city.name %> <%=@store.address%></div>
+            <div>電話番号：<%= @store.phone_number %></div>
+            <div>FAX：<%= @store.fax_number %></div>
+            <div>営業時間：<%= @store.open_time %></div>
+            <div>定休日：<%= @store.holiday %></div>
+        </div>
+    </div>
+
 </div>
 
-<div class="store-detail">
-<div><%= @store.name %>について</div>
-<div>企業名：<%= @store.company.name %></div>
-<div>郵便番号：<%= @store.post_code %></div>
-<div>住所：<%= @store.city.prefecture.name %> <%= @store.city.name %> <%=@store.address%></div>
-<div>電話番号：<%= @store.phone_number %></div>
-<div>FAX：<%= @store.fax_number %></div>
-<div>営業時間：<%= @store.open_time %></div>
-<div>定休日：<%= @store.holiday %></div>
-
-</div>
 
 <% @public_reviews.each do |review|%>
 
