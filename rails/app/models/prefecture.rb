@@ -2,5 +2,5 @@
 
 class Prefecture < ApplicationRecord
   has_many :cities, dependent: :destroy
-  validates :name, :yomi, presence: true
+  validates :name, presence: true
 end

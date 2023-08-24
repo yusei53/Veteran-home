@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class AssessmentUser < ApplicationRecord
-  belongs_to :city
-  has_many :public_reviews, dependent: :destroy
-  has_many :original_reviews, dependent: :destroy
+  has_one :original_review, dependent: :destroy
 
   validates :name, :yomi, shimei_format:
-  validates :email, email_format: 
+  # validate :email, email_format:
+  validates :name, :yomi, presence: true
+  validates :email, presence: true
   validates :is_recieved, presence: true
-  validates :original_review_id, presence: true
-  
-end
+  # validates :original_review_id, presence: true
+  validates :gender_id, inclusion: { in: Gendestroy
+.all.map(&:id) }

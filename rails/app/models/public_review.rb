@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PublicReview < ApplicationRecord
-  has_one :original_review, dependent: :destroy
+  belongs_to :original_review
   belongs_to :assessment_user
   belongs_to :city
   belongs_to :store

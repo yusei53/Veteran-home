@@ -79,5 +79,10 @@ group :test do
   gem 'webdrivers'
 end
 
-# 男、女などの選択肢を0,1として持つactive_record導入のため
+gem 'rake'
+
+gem 'daru'
+
 gem 'active_hash'
+
+gem 'ruby-progressbar'
