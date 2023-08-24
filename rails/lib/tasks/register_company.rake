@@ -12,14 +12,14 @@ namespace :register_company do
     p '===START Register Company==='
     (0..csv_length - 1).each do |idx|
       # 企業がまだ登録されていない場合は登録
-      next unless Company.find_by(name: csv_data['企業名'][idx]).nil?
+      next unless Company.find_by!(name: csv_data['企業名'][idx]).nil?
 
       record = {
         ieul_company_id: csv_data['ieul_企業id'][idx].to_i,
         name: csv_data['企業名'][idx]
       }
       p record
-      Company.create(record)
+      Company.create!(record)
     end
     p '===END Register Company==='
     # << 企業の登録 <<
@@ -29,12 +29,12 @@ namespace :register_company do
     store_records = []
     (0..csv_length - 1).each do |idx|
       record = {
-        company_id: Company.find_by(name: csv_data['企業名'][idx]).id,
+        company_id: Company.find_by!(name: csv_data['企業名'][idx]).id,
         name: csv_data['店舗名'][idx],
         ieul_store_id: csv_data['ieul_店舗id'][idx].to_i,
         logo_url: csv_data['ロゴURL'][idx],
         post_code: csv_data['郵便番号'][idx],
-        city_id: City.find_by(name: csv_data['市区町村'][idx]).id,
+        city_id: City.find_by!(name: csv_data['市区町村'][idx]).id,
         address: csv_data['以降住所'][idx],
         phone_number: csv_data['電話番号'][idx],
         fax_number: csv_data['FAX番号'][idx],
@@ -47,7 +47,7 @@ namespace :register_company do
       p record
       p '------------------'
     end
-    Store.create(store_records)
+    Store.create!(store_records)
     p '===END Register Store==='
     # << 店舗の登録 <<
   end

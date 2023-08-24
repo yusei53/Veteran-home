@@ -79,14 +79,10 @@ group :test do
   gem 'webdrivers'
 end
 
-# >> rake task用 >>
 gem 'rake'
-# << rake task用 <<
 
 # >> CSVを扱いやすくするため >>
 gem 'daru'
 # << CSVを扱いやすくするため <<
 
-# >> 男性・女性などの選択肢を0,1などでもつため >>
 gem 'active_hash'
-# << 男性・女性などの選択肢を0,1などでもつため <<
