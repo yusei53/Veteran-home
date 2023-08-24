@@ -2,6 +2,7 @@
 
 class AreasController < ApplicationController
   def show
-    @company = Company.find(params[:id])
+    @store = Store.find(params[:id])
+    @company = @store.company
   end
 end
