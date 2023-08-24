@@ -1,5 +1,8 @@
-class AreasController < ApplicationController
+# frozen_string_literal: true
 
-    def show
-    end
+class AreasController < ApplicationController
+  def show
+    @store = Store.find(params[:id])
+    @company = @store.company
+  end
 end
