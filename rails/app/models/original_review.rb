@@ -2,7 +2,7 @@
 
 class OriginalReview < ApplicationRecord
   has_one :public_review, dependent: :destroy
-  belongs_to :assessment_user
-  belongs_to :city
+  belongs_to :city, foreign_key: :property_city_id
   belongs_to :store
+  has_one :assessment_user
 end

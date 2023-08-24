@@ -85,5 +85,5 @@ gem 'active_hash'
 # csvを扱いやすくするライブラリ
 gem "daru"
 
-# ファイル保存の進捗表示
+# ファイル保存の進捗表示(プログレスバー)
 gem "ruby-progressbar"
