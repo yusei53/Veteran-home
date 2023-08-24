@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe 'AssessmentForms', type: :request do
+RSpec.describe 'AssessmentForms' do
   describe 'GET /assessment_forms' do
     it '査定依頼フォームにアクセスする' do
       get assessment_forms_path
