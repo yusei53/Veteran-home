@@ -1,4 +1,4 @@
-<div class="custom-title">
+<div class="custom-title mb-5">
 <h1><%= @company.name %>
 <%= @store.name %>
 </h1>
@@ -19,10 +19,10 @@
 
 <div class="row mt-5 mb-5">
 
-    <div class="col-md-6 mt-5">
+    <div class="col-md-6 mt-2">
         <div class="store-score">
             <div align="center" class="">総合評価</div>
-            <div class="" align="center"><%=@score_total%></div>
+            <div class="total-score" align="center"><%=@score_total%><small class="font-small">/ 5</small></div>
 
             <div class="aaa">
             <table border="0" align="center">
@@ -33,19 +33,19 @@
                 </tr>
 
                 <tr>
-                <td align="center"><%=@score_store%></td>
-                <td align="center"><%=@score_contract%></td>
-                <td align="center"><%=@score_speed%></td>
+                <td ><%=@score_store%></td>
+                <td ><%=@score_contract%></td>
+                <td ><%=@score_speed%></td>
                 </tr>
 
             </table>
            </div>
-            </div>
+        </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mt-3">
         <div class="store-detail">
-            <div><%= @store.name %>について</div>
+            <div><%= !@store.name.nil? ? @store.name : @store.company.name %>について</div>
             <div>企業名：<%= @store.company.name %></div>
             <div>郵便番号：<%= @store.post_code %></div>
             <div>住所：<%= @store.city.prefecture.name %> <%= @store.city.name %> <%=@store.address%></div>
@@ -59,21 +59,24 @@
 </div>
 
 
-<h4><%=@store.name%>で売却した人の口コミ （平均評価<%=@score_total%>）</h4>
+<h4><%= !@store.name.nil? ? @store.name : @store.company.name %>で売却した人の口コミ （平均評価<%=@score_total%>）</h4>
 <% @public_reviews.each do |review|%>
 
 <a class="store-card" href="/reviews/<%=review.id%>">
-    <div class="card" style="width: 80rem;">
+    <div class="card mb-3" style="width: 100%;">
     <div class="card-body">
         <h5 class="card-title"><%= review.headline %></h5>
         <h6 class="card-subtitle mb-2 text-muted"> 対応満足度：<%= review.score_contract %></h6>
         <p class="card-text"><%= review.reason_score%></p>
         <h6 class="card-subtitle mb-2 text-muted">
-        成約価格<%= review.price_contract%> 
-        (<%=review.date_handover.strftime("%Y年 %m月")%>に引き渡し)
+            成約価格<%= review.price_contract%>円
+            (<%=review.date_handover.strftime("%Y年 %m月")%>に引き渡し)
         </h6>
 
     </div>
     </div>
 </a>
+
+
+
 <% end %>

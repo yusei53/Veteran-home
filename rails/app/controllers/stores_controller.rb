@@ -12,13 +12,10 @@ class StoresController < ApplicationController
     @score_store = 0
     @score_speed = 0
     @public_reviews.each do |r|
-      @score_store += r.score_store
-      @score_contract += r.score_contract
-      @score_speed += r.score_speed
+      @score_store += r.score_store / @public_reviews.length
+      @score_contract += r.score_contract / @public_reviews.length
+      @score_speed += r.score_speed / @public_reviews.length
     end
-    @score_contract /= @public_reviews.length
-    @score_store /= @public_reviews.length
-    @score_speed /= @public_reviews.length
     @score_total = (@score_contract + @score_speed + @score_store) / 3
   end
 end
