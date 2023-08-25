@@ -16,76 +16,76 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#name' do
       subject do
-        FactoryBot.build(:assessment_user, name: name)
+        FactoryBot.build(:assessment_user, name: n)
       end
 
       context '正常ケース' do
-         let(:name){'テスト太郎'} 
+         let(:n){'テスト太郎'} 
         it { is_expected.to be_valid }
       end
     end
     describe '#yomi' do
       subject do
-        FactoryBot.build(:assessment_user, yomi: yomi)
+        FactoryBot.build(:assessment_user, yomi: y)
       end
 
       context 'バリデーションがかかっていないのでなんでも通る' do
-        let(:yomi){Faker::String.random} 
+        let(:y){Faker::String.random} 
         it { is_expected.to be_valid }
       end
       context '空値の許容' do
-        let(:yomi){nil} 
+        let(:y){nil} 
         it { is_expected.to be_valid }
       end
     end
 
     describe '#email' do
       subject do
-        FactoryBot.build(:assessment_user, email: email)
+        FactoryBot.build(:assessment_user, email: e)
       end
 
       context '正常ケース' do
-        let(:email){'hoge.huga@example.com'} 
+        let(:e){'hoge.huga@example.com'} 
         it { is_expected.to be_valid }
       end
 
       context '空値の許容' do
-         let(:email){nil} 
+         let(:e){nil} 
         it { is_expected.to be_valid }
       end
     end
 
     describe '#assessment_request_date' do
       subject do
-        FactoryBot.build(:assessment_user, assessment_request_date: assessment_request_date)
+        FactoryBot.build(:assessment_user, assessment_request_date: a)
       end
 
       context '正常ケース' do
-        let(:assessment_request_date){"2023-08-25"} 
+        let(:a){"2023-08-25"} 
         it { is_expected.to be_valid }
       end
     end
     describe '#is_received' do
       subject do
-        FactoryBot.build(:assessment_user, is_received: is_received)
+        FactoryBot.build(:assessment_user, is_received: i)
       end
 
       bool_cases = [true, false]
       bool_cases.each do |bool_case|
         context '正常ケース' do
-          let(:is_received){bool_case} 
+          let(:i){bool_case} 
           it { is_expected.to be_valid }
         end
       end
     end
     describe '#gender_id' do
       subject do
-        FactoryBot.build(:assessment_user, gender_id: gender_id)
+        FactoryBot.build(:assessment_user, gender_id: g)
       end
 
       Gender.all.map(&:id).each do |gender_id|
         context '正常ケース' do
-            let(:gender_id){gender_id} 
+            let(:g){gender_id} 
             it { is_expected.to be_valid }
         end
       end
@@ -93,50 +93,50 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#gender_id' do
       subject do
-        FactoryBot.build(:assessment_user, gender_id: gender_id)
+        FactoryBot.build(:assessment_user, gender_id: g)
       end
 
       context '正常ケース' do
         Gender.all.map(&:id).each do |gender_id|
-          let(:gender_id){gender_id} 
+          let(:g){gender_id} 
           it { is_expected.to be_valid }
         end
       end
       context "空値の許容" do
-        let(:gender_id){nil}
+        let(:g){nil}
         it{ is_expected.to be_valid}
       end
     end
     describe '#age' do
       subject do
-        FactoryBot.build(:assessment_user, age: age)
+        FactoryBot.build(:assessment_user, age: a)
       end
       
       age_cases = [21,200]
       age_cases.each do |age_case|
         context '正常ケース' do
-          let(:age){age_case} 
+          let(:a){age_case} 
           it { is_expected.to be_valid }
         end
       end
 
       context 'エッジケース' do
-        let(:age){0} 
+        let(:a){0} 
         it { is_expected.to be_valid }
       end
     end
     describe '#address' do
       subject do
-        FactoryBot.build(:assessment_user, address: address)
+        FactoryBot.build(:assessment_user, address: a)
       end
 
       context 'バリデーションがかかっていないのでなんでも通る' do
-        let(:address){Faker::String.random} 
+        let(:a){Faker::String.random} 
         it { is_expected.to be_valid }
       end
 
       context '空値の許容' do
-        let(:address){nil} 
+        let(:a){nil} 
         it { is_expected.to be_valid }
       end
     end
@@ -146,23 +146,23 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#name' do
       subject do
-        FactoryBot.build(:assessment_user, name: name)
+        FactoryBot.build(:assessment_user, name: n)
       end
       context '空値' do
-         let(:name){nil} 
+         let(:n){nil} 
         it { is_expected.to be_invalid }
       end
     end
 
     describe '#email' do
       subject do
-        FactoryBot.build(:assessment_user, email: email)
+        FactoryBot.build(:assessment_user, email: e)
       end
 
       invalid_cases = ["hoge","hoge.huga","hoge.huga@","hoge.huga@example","hoge.huga@example."]
       invalid_cases.each do |invalid_case |
         context 'invalid email formats' do
-              let(:email){invalid_case} 
+              let(:e){invalid_case} 
               it do
                 is_expected.to be_invalid 
             end
@@ -172,17 +172,17 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#assessment_request_data' do
       subject do
-        FactoryBot.build(:assessment_user, assessment_request_date: assessment_request_date) 
+        FactoryBot.build(:assessment_user, assessment_request_date: a) 
       end
       context '空値' do
-         let(:assessment_request_date){nil} 
+         let(:a){nil} 
         it { is_expected.to be_invalid }
       end
 
       month_cases = ["1999-13-31","1999-hoge-31", "1999-2-31"]
       month_cases.each do |month_case|
         context 'invalid_month_format' do
-          let(:assessment_request_date){month_case} 
+          let(:a){month_case} 
           it { is_expected.to be_invalid }
         end
       end
@@ -190,31 +190,31 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#is_received' do
       subject do
-        FactoryBot.build(:assessment_user, is_received: is_received)
+        FactoryBot.build(:assessment_user, is_received: i)
       end
       context '空値' do
-         let(:is_received){nil} 
+         let(:i){nil} 
         it { is_expected.to be_invalid }
       end
     end
     
     describe '#age' do
       subject do
-        FactoryBot.build(:assessment_user, age: age)
+        FactoryBot.build(:assessment_user, age: a)
       end
       context '０未満の値' do
-         let(:age){-1} 
+         let(:a){-1} 
         it { is_expected.to be_invalid }
       end
       context '小数' do
-         let(:age){0.1} 
+         let(:a){0.1} 
         it { is_expected.to be_invalid }
       end
     end
 
     describe '#gender_id' do
       subject do
-        FactoryBot.build(:assessment_user, gender_id: gender_id)
+        FactoryBot.build(:assessment_user, gender_id: g)
       end
     end
   end
