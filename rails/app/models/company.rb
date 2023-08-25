@@ -2,5 +2,6 @@
 
 class Company < ApplicationRecord
   has_many :stores, dependent: :destroy
-  validates :name, :ieul_company_id, presence: true
+  validates :name, presence: true
+  validates :ieul_company_id, presence: true, numericality: { only_integer: true }
 end
