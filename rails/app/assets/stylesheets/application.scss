@@ -43,6 +43,21 @@ p {
   .d-flex{
     display:flex;
     position:relative;
+
+    .side-right{
+      flex:3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        max-width: 65%;
+        height: auto;
+        padding-right: 15%;
+      }
+    }
+    .side-left{
+      flex:5
+    }
   }
 
   .custom-title h1{
@@ -50,10 +65,7 @@ p {
     margin-right:10px;
   }
 
-  .side-right{
-    position: absolute;
-    right:5%;
-  }
+ 
 
   .store-card{
     text-decoration: none;
@@ -73,6 +85,11 @@ p {
 
     .total-score{
       font-size: 6.5em;
+      font-weight: bold;
+    }
+    .total-score-tex{
+      font-size: 2.0em;
+      font-weight: bold;
     }
 
     table{
@@ -83,6 +100,7 @@ p {
       padding-left:  2%;
       padding-right: 2%;
       text-align: center;
+      font-size: x-large;
     }
 
     .font-small{
