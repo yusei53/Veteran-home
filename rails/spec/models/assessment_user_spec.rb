@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'AssessmentUser', type: :model do
+RSpec.describe 'AssessmentUser' do
   describe 'be_valid' do
     describe 'factorybot' do
       subject do
-        FactoryBot.build(:assessment_user)
+        build(:assessment_user)
       end
 
       context '正常ケース' do
@@ -14,7 +16,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#name' do
       subject do
-        FactoryBot.build(:assessment_user, name: n)
+        build(:assessment_user, name: n)
       end
 
       context '正常ケース' do
@@ -26,7 +28,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#yomi' do
       subject do
-        FactoryBot.build(:assessment_user, yomi: y)
+        build(:assessment_user, yomi: y)
       end
 
       context 'バリデーションがかかっていないのでなんでも通る' do
@@ -44,7 +46,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#email' do
       subject do
-        FactoryBot.build(:assessment_user, email: e)
+        build(:assessment_user, email: e)
       end
 
       context '正常ケース' do
@@ -62,7 +64,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#assessment_request_date' do
       subject do
-        FactoryBot.build(:assessment_user, assessment_request_date: a)
+        build(:assessment_user, assessment_request_date: a)
       end
 
       context '正常ケース' do
@@ -74,7 +76,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#is_received' do
       subject do
-        FactoryBot.build(:assessment_user, is_received: i)
+        build(:assessment_user, is_received: i)
       end
 
       bool_cases = [true, false]
@@ -89,7 +91,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#gender_id' do
       subject do
-        FactoryBot.build(:assessment_user, gender_id: g)
+        build(:assessment_user, gender_id: g)
       end
 
       Gender.all.map(&:id).each do |gender_id|
@@ -103,7 +105,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#gender_id' do
       subject do
-        FactoryBot.build(:assessment_user, gender_id: g)
+        build(:assessment_user, gender_id: g)
       end
 
       context '正常ケース' do
@@ -122,7 +124,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#age' do
       subject do
-        FactoryBot.build(:assessment_user, age: a)
+        build(:assessment_user, age: a)
       end
 
       age_cases = [21, 200]
@@ -143,7 +145,7 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#address' do
       subject do
-        FactoryBot.build(:assessment_user, address: a)
+        build(:assessment_user, address: a)
       end
 
       context 'バリデーションがかかっていないのでなんでも通る' do
@@ -163,19 +165,19 @@ RSpec.describe 'AssessmentUser', type: :model do
   describe 'be_invalid' do
     describe '#name' do
       subject do
-        FactoryBot.build(:assessment_user, name: n)
+        build(:assessment_user, name: n)
       end
 
       context '空値' do
         let(:n) { nil }
 
-        it { is_expected.to be_invalid }
+        it { is_expected.not_to be_valid }
       end
     end
 
     describe '#email' do
       subject do
-        FactoryBot.build(:assessment_user, email: e)
+        build(:assessment_user, email: e)
       end
 
       invalid_cases = ['hoge', 'hoge.huga', 'hoge.huga@', 'hoge.huga@example', 'hoge.huga@example.']
@@ -184,7 +186,7 @@ RSpec.describe 'AssessmentUser', type: :model do
           let(:e) { invalid_case }
 
           it do
-            expect(subject).to be_invalid
+            expect(subject).not_to be_valid
           end
         end
       end
@@ -192,13 +194,13 @@ RSpec.describe 'AssessmentUser', type: :model do
 
     describe '#assessment_request_data' do
       subject do
-        FactoryBot.build(:assessment_user, assessment_request_date: a)
+        build(:assessment_user, assessment_request_date: a)
       end
 
       context '空値' do
         let(:a) { nil }
 
-        it { is_expected.to be_invalid }
+        it { is_expected.not_to be_valid }
       end
 
       month_cases = ['1999-13-31', '1999-hoge-31', '1999-2-31']
@@ -206,44 +208,38 @@ RSpec.describe 'AssessmentUser', type: :model do
         context 'invalid_month_format' do
           let(:a) { month_case }
 
-          it { is_expected.to be_invalid }
+          it { is_expected.not_to be_valid }
         end
       end
     end
 
     describe '#is_received' do
       subject do
-        FactoryBot.build(:assessment_user, is_received: i)
+        build(:assessment_user, is_received: i)
       end
 
       context '空値' do
         let(:i) { nil }
 
-        it { is_expected.to be_invalid }
+        it { is_expected.not_to be_valid }
       end
     end
 
     describe '#age' do
       subject do
-        FactoryBot.build(:assessment_user, age: a)
+        build(:assessment_user, age: a)
       end
 
       context '０未満の値' do
         let(:a) { -1 }
 
-        it { is_expected.to be_invalid }
+        it { is_expected.not_to be_valid }
       end
 
       context '小数' do
         let(:a) { 0.1 }
 
-        it { is_expected.to be_invalid }
-      end
-    end
-
-    describe '#gender_id' do
-      subject do
-        FactoryBot.build(:assessment_user, gender_id: g)
+        it { is_expected.not_to be_valid }
       end
     end
   end
