@@ -3,7 +3,7 @@
 class CreateOriginalReviews < ActiveRecord::Migration[7.0]
   def change
     create_table :original_reviews do |t|
-      t.bigint :property_city_id, null: false, index: true
+      t.references :city, null: false, foreign_key: true
       t.references :store, null: false, foreign_key: true
       t.references :assessment_user, null: false, foreign_key: true
 
@@ -35,6 +35,5 @@ class CreateOriginalReviews < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_foreign_key :original_reviews, :cities, column: :property_city_id
   end
 end

@@ -2,7 +2,7 @@
 
 class StoresController < ApplicationController
   def show
-    @store = Store.find_by(ieul_store_id: params[:id])
+    @store = Store.find(params[:id])
     @company = @store.company
 
     original_reviews = OriginalReview.where(store: @store)
