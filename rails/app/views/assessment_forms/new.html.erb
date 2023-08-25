@@ -2,17 +2,50 @@
   <div class="col-md-6 col-md-offset-3 custom-margin-top">
     <%= form_with(model: @form, url: assessment_form_url) do |f| %>
 
-        <%=f.label :name %>
+        <%=f.label :name, "お名前" %>
         <%=f.text_field :name, class: 'form-control'%>
 
-        <%=f.label :yomi %>
+        <%=f.label :yomi, "ふりがな" %>
         <%=f.text_field :yomi, class: 'form-control'%>
         
-        <%=f.label :phone_number %>
+        <%=f.label :phome_number, "電話番号" %>
         <%=f.telephone_field :phone_number, class: 'form-control'%>
 
-        <%=f.label :email %>
+        <%=f.label :email, "メールアドレス" %>
         <%=f.email_field :email, class: 'form-control'%>
+
+        <%=f.label :branch, "査定依頼店舗名" %>
+        <%=f.text_field :branch, class: 'form-control'%>
+
+        <%=f.label :property_prefecture, "物件の所在：都道府県" %>
+        <%=f.text_field :property_prefecture, class: 'form-control'%>
+
+        <%=f.label :property_city, "物件の所在：市区" %>
+        <%=f.text_field :property_city, class: 'form-control'%>
+
+        <%=f.label :property_address, "物件の所在：市区以下の住所" %>
+        <%=f.text_field :property_address, class: 'form-control'%>
+
+        <%=f.label :property_type, "物件種別"%>
+        <%=f.collection_select(:property_type, Property.all, :id, :name, {},{class:"form-control"}) %>
+
+        <%=f.label :property_building_area_unit, "建物面積単位"%>
+        <%=f.collection_select(:property_building_area_unit, BuildingAreaUnit.all, :id, :name, {},{class:"form-control"}) %>
+
+        <%=f.label :property_exclusive_area, "専有面積"%>
+        <%=f.text_field :property_city,placeholder: "選択した面積単位で入力してください" , class: 'form-control'%>
+
+        <%=f.label :property_land_area, "土地面積" %>
+        <%=f.text_field :property_land_area,placeholder: "選択した面積単位で入力してください", class: 'form-control'%>
+
+        <%=f.label :property_building_area, "建物面積" %>
+        <%=f.text_field :property_building_area,placeholder: "選択した面積単位で入力してください", class: 'form-control'%>
+
+        <%=f.label :property_floor_area, "延床面積" %>
+        <%=f.text_field :property_floor_area,placeholder: "選択した面積単位で入力してください", class: 'form-control'%>
+
+        <%=f.hidden_field :url_param, class: 'form-control'%>
+
 
         <div class="col-md-6 custom-margin-top">
           <%= f.submit "査定依頼する", class: "btn btn-primary form-control " %>
