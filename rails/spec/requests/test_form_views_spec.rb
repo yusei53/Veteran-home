@@ -22,7 +22,7 @@ RSpec.describe 'TestFormViews' do
                  property_floor_area' => '', 'url_param' => 'beteran-sumai',
                  'property_room_plan' => '1', 'property_constructed_year' => '',
                  'commit' => '査定依頼する' }
-      post('/assessment_forms', params:)
+      post('/assessment_forms', params:params)
       expect(response).to redirect_to('/assessment_forms/thanks')
     end
   end
