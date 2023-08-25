@@ -19,7 +19,7 @@ namespace :register_review do
       user_record = {
         name: csv_data['名前'][idx],
         yomi: nil,
-        gender_id: Gender.find_by(name: csv_data['性別'][idx]).id,
+        gender_id: Gender.find_by!(name: csv_data['性別'][idx]).id,
         age: csv_data['年齢'][idx].to_i,
         email: nil,
         city_id: nil, # ここはアンケート結果 (reviewerの住んでる市)
@@ -27,15 +27,15 @@ namespace :register_review do
         assessment_request_date: csv_data['査定依頼時期'][idx].to_date,
         is_received: false,
       }
-      user=AssessmentUser.create!(user_record)
+      user=AssessmentUser.find_or_create_by(user_record)
       # p user
 
       review_record = {
-        property_city_id: City.find_by(name: csv_data['市区町村'][idx]).id, # Cityからとってくる
-        store_id: Store.find_by(ieul_store_id: csv_data['ieul_店舗id'][idx]).id, # Storeから取ってくる
+        property_city_id: City.find_by!(name: csv_data['市区町村'][idx]).id, # Cityからとってくる
+        store_id: Store.find_by!(ieul_store_id: csv_data['ieul_店舗id'][idx]).id, # Storeから取ってくる
         property_address: csv_data['住所全部'][idx],
-        property: Property.find_by(name: csv_data['物件種別'][idx]).id,
-        num_sale: NumSale.find_by(name: csv_data['売却回数'][idx]).id,
+        property: Property.find_by!(name: csv_data['物件種別'][idx]).id,
+        num_sale: NumSale.find_by!(name: csv_data['売却回数'][idx]).id,
         date_considered: csv_data['売却検討時期'][idx].to_date,
         date_assessment: csv_data['査定依頼時期'][idx].to_date,
         start_sale: csv_data['売出時期'][idx].to_date,
@@ -61,14 +61,13 @@ namespace :register_review do
         assessment_user_id: user.id
       }
 
-      # p review_record
-      review = OriginalReview.create!(review_record)
+      review = OriginalReview.find_or_create_by!(review_record)
 
       public_record = {
         original_review_id: review.id,
         property_address: csv_data['住所全部'][idx],
-        property: Property.find_by(name: csv_data['物件種別'][idx]).id,
-        num_sale: NumSale.find_by(name: csv_data['売却回数'][idx]).id,
+        property: Property.find_by!(name: csv_data['物件種別'][idx]).id,
+        num_sale: NumSale.find_by!(name: csv_data['売却回数'][idx]).id,
         date_considered: csv_data['売却検討時期'][idx].to_date,
         date_assessment: csv_data['査定依頼時期'][idx].to_date,
         start_sale: csv_data['売出時期'][idx].to_date,
@@ -94,12 +93,12 @@ namespace :register_review do
       }
 
       assessment_area_record = {
-        store_id: Store.find_by(ieul_store_id: csv_data['ieul_店舗id'][idx]).id,
-        city_id: City.find_by(name: csv_data['市区町村'][idx]).id
+        store_id: Store.find_by!(ieul_store_id: csv_data['ieul_店舗id'][idx]).id,
+        city_id: City.find_by!(name: csv_data['市区町村'][idx]).id
       }
 
-      PublicReview.create!(public_record)
-      AssessmentArea.create!(assessment_area_record)
+      PublicReview.find_or_create_by!(public_record)
+      AssessmentArea.find_or_create_by!(assessment_area_record)
 
       pb.increment
     end

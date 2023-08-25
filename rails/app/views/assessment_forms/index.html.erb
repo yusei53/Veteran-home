@@ -1,0 +1,17 @@
+<div class="d-flex align-items-center justify-content-center">
+  <div class="col-md-6 col-md-offset-3 custom-margin-top">
+    <%= form_with(url: assessment_forms_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+  <div class="col-md-6 custom-margin-top">
+      <%= f.submit "査定依頼する", class: "btn btn-primary form-control " %>
+    <% end %>
+
+  </div>
+  </div>
+</div>
