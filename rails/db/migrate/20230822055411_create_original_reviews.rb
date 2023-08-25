@@ -3,7 +3,7 @@
 class CreateOriginalReviews < ActiveRecord::Migration[7.0]
   def change
     create_table :original_reviews do |t|
-      t.references :city, null: false, foreign_key:true
+      t.references :city, null: false, foreign_key: true
       t.references :store, null: false, foreign_key: true
       t.references :assessment_user, null: false, foreign_key: true
 
