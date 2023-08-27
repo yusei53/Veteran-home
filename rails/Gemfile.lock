@@ -113,6 +113,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -315,6 +316,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  httpclient
   importmap-rails
   jbuilder
   komachi_heartbeat (~> 2.5)
