@@ -61,6 +61,7 @@ p {
     width: 100%;
   }
 
+
   .card-body{
     margin: 5% 0;
   }
@@ -86,3 +87,19 @@ p {
       border-left: none;
     }
   }
+
+  .custom-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    * {
+      box-sizing: content-box;
+    }
+  }
+
+  .custom-grid .col-4 {
+    flex: 0 15%; /* 4列で表示、余白を考慮 */
+    padding: 6px; /* 余白の調整 */
+  }
+
+
