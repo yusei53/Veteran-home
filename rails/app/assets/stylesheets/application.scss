@@ -15,7 +15,7 @@ h1 {
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-weight: bold;
 }
 
@@ -45,6 +45,21 @@ p {
   .d-flex{
     display:flex;
     position:relative;
+
+    .side-right{
+      flex:3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        max-width: 65%;
+        height: auto;
+        padding-right: 15%;
+      }
+    }
+    .side-left{
+      flex:5
+    }
   }
 
   .custom-title h1{
@@ -52,9 +67,58 @@ p {
     margin-right:10px;
   }
 
-  .side-right{
-    position: absolute;
-    right:0;
+ 
+
+  .store-card{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 15px;
+
+    &:hover{
+      color: black;
+    }
+  }
+
+  .store-score{
+
+    .aaa{
+      padding-top: 5%;
+    }
+
+    .total-score{
+      font-size: 6.5em;
+      font-weight: bold;
+    }
+    .total-score-tex{
+      font-size: 2.0em;
+      font-weight: bold;
+    }
+
+    table{
+      width: 80%;
+    }
+
+    th, td{
+      padding-left:  2%;
+      padding-right: 2%;
+      text-align: center;
+      font-size: x-large;
+    }
+
+    .font-small{
+      font-size: 0.4em;
+      padding-left: 15px;
+      padding-top: 15px;
+    }
+  }
+
+  .store-detail{
+    div{
+      padding-bottom: 5px;
+      font-size: x-large;
+    }
+
+    text-align: center;
   }
 
   .w-100{
@@ -101,5 +165,6 @@ p {
     flex: 0 15%; /* 4列で表示、余白を考慮 */
     padding: 6px; /* 余白の調整 */
   }
+
 
 
