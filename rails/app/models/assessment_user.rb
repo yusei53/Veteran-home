@@ -2,7 +2,6 @@
 
 class AssessmentUser < ApplicationRecord
   has_one :original_review, dependent: :destroy
-  belongs_to :city
 
   validates_with EmailValidator
 
