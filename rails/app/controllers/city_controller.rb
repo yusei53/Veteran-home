@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CityController < ApplicationController
-  before_action :set_city, only: [show]
+  before_action :set_city, only: %i[show]
 
   def show
     @stores = Store.where(city: @city)
