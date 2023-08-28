@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class AssessmentUser < ApplicationRecord
+  has_one :original_review, dependent: :destroy
   belongs_to :city
-  has_many :public_reviews, dependent: :destroy
-  has_many :original_reviews, dependent: :destroy
 end

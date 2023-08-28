@@ -22,14 +22,14 @@ class CreatePublicReviews < ActiveRecord::Migration[7.0]
       t.integer :price_contract, null: false
       t.integer :score_contract, null: false
       t.integer :contract_type, null: false
-      t.string :headline, null: false
+      t.text :headline, null: false
       t.integer :reason_sale, null: false, comment: '売却理由は選択肢'
-      t.string :anxiety, null: false
-      t.string :reason_decision, null: false
+      t.text :anxiety, null: false
+      t.text :reason_decision, null: false
       t.integer :score_store, null: false, comment: '対応満足度'
-      t.string :reason_score, null: false
-      t.string :advice, null: false
-      t.string :improvement
+      t.text :reason_score, null: false
+      t.text :advice, null: false
+      t.text :improvement
 
       t.timestamps
     end
