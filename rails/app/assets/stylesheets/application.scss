@@ -2,12 +2,14 @@
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-weight: bold;
 }
 
 h1 {
   font-size: 2.8em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin: 30px;
+  font-weight: bold;
 }
 
 h2 {
@@ -118,3 +120,51 @@ p {
 
     text-align: center;
   }
+
+  .w-100{
+    width: 100%;
+  }
+
+
+  .card-body{
+    margin: 5% 0;
+  }
+
+  .f-review-page {
+    width:70rem;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    div{
+      font-size: 22px;
+      padding: 2px;
+    }
+    table {
+      width: 90%; /* 任意の幅を指定 */
+      margin-left: 5%;
+    }
+  
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+      border-right: none;
+      border-left: none;
+    }
+  }
+
+  .custom-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    * {
+      box-sizing: content-box;
+    }
+  }
+
+  .custom-grid .col-4 {
+    flex: 0 15%; /* 4列で表示、余白を考慮 */
+    padding: 6px; /* 余白の調整 */
+  }
+
+
+

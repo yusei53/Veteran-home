@@ -1,3 +1,11 @@
-<h1>エリアページ</h1>
-<div><%= @company.name %></div>
-<div><%= @store.name %></div>
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="custom-grid">
+      <% @cities.each do |city| %>
+        <div class="col-4">
+          <a href="/areas/<%=@prefecture.id%>/city/<%=city.id%>" class="card-link"><%= city.name %></a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
