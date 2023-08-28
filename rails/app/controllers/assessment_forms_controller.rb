@@ -21,12 +21,8 @@ class AssessmentFormsController < ApplicationController
              user_name: '山田 太郎', user_name_kana: 'やまだ たろう', user_tel: '0123456789' }
     response = client.post(url, body:)
 
-    if response.status == 200
-      puts '成功！'
-      redirect_to '/assessment_forms/thanks'
-    else
-      response.status
-      puts '失敗'
-    end
+    return unless response.status == 200
+
+    redirect_to '/assessment_forms/thanks'
   end
 end
