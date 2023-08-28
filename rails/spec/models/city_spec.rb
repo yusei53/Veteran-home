@@ -87,11 +87,5 @@ RSpec.describe 'City' do
         it { is_expected.not_to be_valid }
       end
     end
-
-    describe '#city_id' do
-      subject do
-        build(:city, city_id: c)
-      end
-    end
   end
 end
