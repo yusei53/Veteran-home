@@ -14,8 +14,6 @@ class Store < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, format: { with: /\A[0-9]{2,3}-[0-9]{4}-[0-9]{4}\z/ }
   validates :fax_number, format: { with: /\A[0-9]{2,3}-[0-9]{4}-[0-9]{4}\z/ }
-  # バリデーションなし :open_time
-  # validates :holiday
   validates :catch_copy, presence: true
   validates :introduction, presence: true
 end
