@@ -10,11 +10,11 @@ class AssessmentUser < ApplicationRecord
   validates_with EmailValidator
 
   validates :name, presence: true
-  # validates :yomi
-  # email -> EmailFormatValidator
+  # バリデーションなし :yomi
+  # EmailFormatValidatorで:emailをバリデーション``
   validates :assessment_request_date, presence: true
   validates :is_received, inclusion: [true, false]
   validates :gender_id, inclusion: { in: Gender.all.map(&:id).push(nil) }
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_nil: true }
-  # validates :address
+  # バリデーションなし :address
 end

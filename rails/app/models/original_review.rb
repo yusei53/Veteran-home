@@ -30,5 +30,5 @@ class OriginalReview < ApplicationRecord
   validates :score_store, presence: true, inclusion: { in: 1..5 }
   validates :reason_score, presence: true
   validates :advice, presence: true
-  # validates :improvement
+  # バリデーションなし :improvement
 end
