@@ -19,7 +19,7 @@ class AssessmentFormsController < ApplicationController
              property_floor_area: 1.2, url_param: 'beteran-sumai', property_room_plan: 1,
              property_constructed_year: 1, user_email: 'ddd@gmail.com',
              user_name: '山田 太郎', user_name_kana: 'やまだ たろう', user_tel: '0123456789' }
-    response = client.post(url, body:)
+    response = client.post(url, body)
 
     return unless response.status == 200
 
