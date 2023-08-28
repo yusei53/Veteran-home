@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount KomachiHeartbeat::Engine => '/ops'
+
   resources :areas, :stores, :reviews, only: [:show]
   resources :areas do
     resources :city
