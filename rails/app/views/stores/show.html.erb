@@ -11,7 +11,7 @@
     </div>
 
     <div class="side-right">
-        <img src="<%= @store.logo_url %>" alt="店舗Image">
+        <img src="<%= @store.logo_url %>" alt="<%= !@store.name.nil? ? @store.name : @store.company.name %>の画像">
     </div>
 </div>
 
