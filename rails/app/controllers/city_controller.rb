@@ -8,7 +8,7 @@ class CityController < ApplicationController
 
     @latest_public_reviews = []
     @stores.each do |store|
-      latest_original_review = OriginalReview.where(store:).order(created_at: :desc).first
+      latest_original_review = OriginalReview.where(store).order(created_at: :desc).first
       latest_public_review = PublicReview.find_by(original_review: latest_original_review)
       @latest_public_reviews.push(latest_public_review)
     end
