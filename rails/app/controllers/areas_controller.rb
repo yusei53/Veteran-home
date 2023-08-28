@@ -2,8 +2,7 @@
 
 class AreasController < ApplicationController
   def show
-    @prefecture = Prefecture.find(params[:id]) 
-    @cities = @prefecture.cities 
-  
+    @prefecture = Prefecture.find(params[:id])
+    @cities = @prefecture.cities
   end
 end
