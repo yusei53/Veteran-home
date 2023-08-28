@@ -254,6 +254,7 @@ RSpec.describe 'Store' do
         end
       end
     end
+
     describe '#catch_copy' do
       subject do
         build(:store, catch_copy: c)
