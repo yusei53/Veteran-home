@@ -11,7 +11,5 @@ FactoryBot.define do
     gender_id { Gender.all.map(&:id).sample }
     age { Faker::Number.number(digits: 3) }
     address { Faker::Address.street_address }
-
-    city
   end
 end
