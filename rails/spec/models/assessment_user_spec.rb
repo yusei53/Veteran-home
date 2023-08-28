@@ -94,20 +94,6 @@ RSpec.describe 'AssessmentUser' do
         build(:assessment_user, gender_id: g)
       end
 
-      Gender.all.map(&:id).each do |gender_id|
-        context '正常ケース' do
-          let(:g) { gender_id }
-
-          it { is_expected.to be_valid }
-        end
-      end
-    end
-
-    describe '#gender_id' do
-      subject do
-        build(:assessment_user, gender_id: g)
-      end
-
       context '正常ケース' do
         Gender.all.map(&:id).each do |gender_id|
           let(:g) { gender_id }
@@ -185,9 +171,7 @@ RSpec.describe 'AssessmentUser' do
         context 'invalid email formats' do
           let(:e) { invalid_case }
 
-          it do
-            expect(subject).not_to be_valid
-          end
+          it { is_expected.not_to be_valid }
         end
       end
     end
