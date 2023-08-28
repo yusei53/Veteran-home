@@ -254,26 +254,6 @@ RSpec.describe 'Store' do
         end
       end
     end
-    # describe '#open_time' do
-    #     subject do
-    #         build(:store, open_time: o)
-    #     end
-
-    #     context '正常ケース' do
-    #         let(:o){}
-    #         it { is_expected.not_to be_valid }
-    #     end
-    # end
-    # describe '#holiday' do
-    #     subject do
-    #         build(:store,holiday: h)
-    #     end
-
-    #     context '正常ケース' do
-    #         let(:h){}
-    #         it { is_expected.not_to be_valid }
-    #     end
-    # end
     describe '#catch_copy' do
       subject do
         build(:store, catch_copy: c)

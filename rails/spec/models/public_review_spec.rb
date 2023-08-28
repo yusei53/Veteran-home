@@ -502,8 +502,6 @@ RSpec.describe 'PublicReview' do
       end
     end
 
-    # is_discountは不正ケースがない（モデルへの値代入時に値がbool値に変換されるため)
-
     describe '#discount_n_month_later' do
       subject do
         build(:original_review, discount_n_month_later: d)
@@ -685,6 +683,5 @@ RSpec.describe 'PublicReview' do
         it { is_expected.not_to be_valid }
       end
     end
-    # improvementはバリデーションなし
   end
 end
