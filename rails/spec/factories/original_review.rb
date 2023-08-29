@@ -29,6 +29,8 @@ FactoryBot.define do
     advice { Faker::Lorem.paragraph(sentence_count: 3) } # 今後売る人へ
     improvement { Faker::Lorem.paragraph(sentence_count: 3) } # 改善点
 
+    assessment_user
+    store
     city
   end
 end
