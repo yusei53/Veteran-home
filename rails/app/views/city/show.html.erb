@@ -1,5 +1,27 @@
+<%= render "areas/area" %>
+  
   <% @stores.each do |store| %>
         <div class="col-4">
         <div><%= store.company.name %><%= store.name %></div>
         </div>
-      <% end %>
+  <% end %>
+
+<% @latest_public_reviews.each do |review|%>
+
+<div class="card mb-3" style="max-width: 80%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <p><%=review.original_review.store.company.name%></p>
+      <p>評価 ★<%=review.score_store%></p>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text"><%=review.reason_decision%></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%end%>
+
