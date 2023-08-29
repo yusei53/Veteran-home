@@ -7,7 +7,6 @@ class Store < ApplicationRecord
   has_many :assessment_areas, dependent: :destroy
   has_many :original_reviews, dependent: :destroy
 
-  validates :name, presence: true
   validates :ieul_store_id, numericality: { only_integer: true }
   validates :logo_url, presence: true
   validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }

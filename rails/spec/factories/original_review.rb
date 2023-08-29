@@ -12,12 +12,12 @@ FactoryBot.define do
     end_sale { sample_date } # 売却時期
     date_handover { sample_date } # 引渡し時期
     score_speed { Faker::Number.within(range: 1..5) } # 売却スピード満足度
-    price_assessment { Faker::Number.number(digits: 10) } # 査定価格
-    price_sale { Faker::Number.number(digits: 10) } # 売却価格
+    price_assessment { Faker::Number.number(digits: 3) } # 査定価格
+    price_sale { Faker::Number.number(digits: 3) } # 売却価格
     is_discount { Faker::Boolean.boolean(true_ratio: 0.5) } # 値下げしたかどうか
     discount_n_month_later { Faker::Number.number(digits: 1) } # 何ヶ月後に値下げしたか
-    price_discount { Faker::Number.number(digits: 10) } # 値引き価格
-    price_contract { Faker::Number.number(digits: 10) } # 成約価格
+    price_discount { Faker::Number.number(digits: 3) } # 値引き価格
+    price_contract { Faker::Number.number(digits: 3) } # 成約価格
     score_contract { Faker::Number.within(range: 1..5) } # 売却価格の満足度
     contract_type { ContractType.all.map(&:id).sample } # 媒介契約の形態
     headline { Faker::Lorem.paragraph(sentence_count: 1) } # 見出し
