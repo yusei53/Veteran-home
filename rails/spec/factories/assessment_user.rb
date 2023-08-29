@@ -8,10 +8,8 @@ FactoryBot.define do
     email { Faker::Internet.email }
     assessment_request_date { Faker::Date.between(from: 1.year.ago, to: 10.days.ago) }
     is_received { Faker::Boolean.boolean(true_ratio: 0.5) }
-    # gender_id
+    gender_id { Gender.all.map(&:id).sample }
     age { Faker::Number.number(digits: 3) }
     address { Faker::Address.street_address }
-
-    city
   end
 end
