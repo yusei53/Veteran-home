@@ -3,11 +3,10 @@
 class Store < ApplicationRecord
   belongs_to :company
   belongs_to :city
-  has_many :cities, dependent: :nullify, through: :assessment_areas
   has_many :assessment_areas, dependent: :destroy
   has_many :original_reviews, dependent: :destroy
+  has_many :cities, dependent: :nullify, through: :assessment_areas
 
-  validates :name, presence: true
   validates :ieul_store_id, numericality: { only_integer: true }
   validates :logo_url, presence: true
   validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
