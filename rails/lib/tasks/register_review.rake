@@ -92,7 +92,13 @@ namespace :register_review do
         improvement: csv_data['不動産会社に改善してほしい点'][idx]
       }
 
+      assessment_area_record = {
+        store_id: Store.find_by!(ieul_store_id: csv_data['ieul_店舗id'][idx]).id,
+        city_id: City.find_by!(name: csv_data['市区町村'][idx]).id
+      }
+
       PublicReview.find_or_create_by!(public_record)
+      AssessmentArea.find_or_create_by!(assessment_area_record)
 
       pb.increment
     end

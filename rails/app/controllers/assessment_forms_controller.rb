@@ -13,12 +13,24 @@ class AssessmentFormsController < ApplicationController
     # formをAPIに送る部分はOK
     # あとはvalidationのみ
 
-    HTTPClient.new
+    client = HTTPClient.new
+    url = 'https://miniul-api.herokuapp.com/affiliate/v2/conversions'
 
-    form_params = permit_form_params
+    form_params = permit_form_params.to_hash.symbolize_keys # これは店舗や市区が文字列のままだからidに変換しないといけない
 
-    body = form_params.to_hash
-    body[:branch_id] = 1 # branch_idはintegerじゃないと422が返ってくる。ほかはなんでも大丈夫そう.
+    # >> 文字列をIDに変換 >>
+    company_instance = Company.find_by(name: form_params[:company])
+    branch_id = Store.find_by(company: company_instance).ieul_store_id
+    property_city_id = City.find_by!(name: form_params[:property_city]).city_id
+    # >> 文字列をIDに変換 >>
+
+    body = form_params.dup
+    body.delete(:branch) # 店舗名の文字列はいらないから捨てる
+    body.delete(:company) # 企業名もいらないから捨てる
+    body[:branch_id] = branch_id
+    body[:property_city] = property_city_id
+
+    response = client.post(url, body)
 
     return unless response.status == 200
 
@@ -29,7 +41,8 @@ class AssessmentFormsController < ApplicationController
 
   def permit_form_params
     params.require(:assessment_form).permit(
-      :branch_id,
+      :company,
+      :branch,
       :property_city,
       :property_address,
       :property_type,

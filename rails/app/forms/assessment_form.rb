@@ -12,7 +12,8 @@ class AssessmentForm
   # << user info <<
 
   # >> property info >>
-  attribute :branch_id, :string # 査定依頼を出す店舗名
+  attribute :company, :string # 査定依頼を企業
+  attribute :branch, :string # 査定依頼を出す店舗名
   attribute :property_prefecture, :string # 物件の都道府県
   attribute :property_city, :string # 物件の市区
   attribute :property_address, :string # 物件の詳しい住所

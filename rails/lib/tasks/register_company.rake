@@ -43,8 +43,6 @@ namespace :register_company do
       Store.find_or_create_by!(store_record)
       p store_record
       p '------------------'
-
-      csv_datad['査定可能エリア'][idx]
     end
     p '===END Register Store==='
     # << 店舗の登録 <<

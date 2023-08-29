@@ -14,8 +14,11 @@
         <%=f.label :user_email, "メールアドレス" %>
         <%=f.email_field :user_email, class: 'form-control'%>
 
-        <%=f.label :branch_id, "査定依頼店舗名" %>
-        <%=f.text_field :branch_id, class: 'form-control'%>
+        <%=f.label :company, "査定依頼店舗" %>
+        <%=f.text_field :company, placeholder: "企業名", class: 'form-control'%>
+        <%#=f.collection_select(:property_type, Company.all, :id, :name, {},{class:"form-control"}) %>
+
+        <%=f.text_field :branch, placeholder: "店舗名(ない場合は空白)", class: 'form-control'%>
 
         <%=f.label :property_prefecture, "物件の所在" %>
         <%=f.text_field :property_prefecture,placeholder:"都道府県", class: 'form-control'%>
