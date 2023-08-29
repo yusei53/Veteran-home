@@ -5,13 +5,14 @@ class AssessmentForm
   include ActiveModel::Attributes # "カラム属性が加えられる"
 
   # >> user info >>
-  attribute :name, :string
-  attribute :yomi, :string
-  attribute :phone_number, :string
-  attribute :email, :string
+  attribute :user_name, :string
+  attribute :user_name_kana, :string
+  attribute :user_tel, :string
+  attribute :user_email, :string
   # << user info <<
 
   # >> property info >>
+  attribute :company, :string # 査定依頼を企業
   attribute :branch, :string # 査定依頼を出す店舗名
   attribute :property_prefecture, :string # 物件の都道府県
   attribute :property_city, :string # 物件の市区

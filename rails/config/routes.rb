@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :areas do
     resources :city
   end
-  get '/assessment_forms', to: 'assessment_forms#index'
+  get '/assessment_forms', to: 'assessment_forms#new'
   post '/assessment_forms', to: 'assessment_forms#create'
   get '/assessment_forms/thanks', to: 'assessment_forms#thanks'
 end
