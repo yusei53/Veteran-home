@@ -62,4 +62,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # rubocopがFactoryBot.create(...)->create(...)に勝手に置換する
+  # よってFactoryBotのcreate,buildなどの短縮表現を使用できるようにする
+  config.include FactoryBot::Syntax::Methods
 end

@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class AssessmentUser < ApplicationRecord
-  belongs_to :city
-  has_many :public_reviews, dependent: :destroy
-  has_many :original_reviews, dependent: :destroy
+  has_one :original_review, dependent: :destroy
+
+  validates_with EmailValidator
+
+  validates :name, presence: true
+  validates :assessment_request_date, presence: true
+  validates :is_received, inclusion: [true, false]
+  validates :gender_id, inclusion: { in: Gender.all.map(&:id).push(nil) }
+  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 0, allow_nil: true }
 end
