@@ -10,24 +10,24 @@ class AssessmentFormsController < ApplicationController
   end
 
   def create
-    #formをAPIに送る部分はOK
-    #あとはvalidationのみ 
+    # formをAPIに送る部分はOK
+    # あとはvalidationのみ
 
-    client    = HTTPClient.new
-    url       = 'https://miniul-api.herokuapp.com/affiliate/v2/conversions'
+    HTTPClient.new
 
-    form_params=get_form_params
-    
-    body=form_params.to_hash
-    body[:branch_id]=1 #branch_idはintegerじゃないと422が返ってくる。ほかはなんでも大丈夫そう.
+    form_params = permit_form_params
+
+    body = form_params.to_hash
+    body[:branch_id] = 1 # branch_idはintegerじゃないと422が返ってくる。ほかはなんでも大丈夫そう.
 
     return unless response.status == 200
 
     redirect_to '/assessment_forms/thanks'
   end
 
-  private 
-  def get_form_params
+  private
+
+  def permit_form_params
     params.require(:assessment_form).permit(
       :branch_id,
       :property_city,
@@ -37,15 +37,14 @@ class AssessmentFormsController < ApplicationController
       :property_land_area,
       :property_building_area,
       :property_building_area_unit,
-      :property_floor_area, 
-      :url_param , 
+      :property_floor_area,
+      :url_param,
       :property_room_plan,
-      :property_constructed_year, 
-
-      :user_email ,
-      :user_name ,
-      :user_name_kana , 
-      :user_tel 
+      :property_constructed_year,
+      :user_email,
+      :user_name,
+      :user_name_kana,
+      :user_tel
     )
   end
 end
