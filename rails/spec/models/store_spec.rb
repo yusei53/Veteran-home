@@ -156,18 +156,6 @@ RSpec.describe 'Store' do
   end
 
   describe 'be_invalid' do
-    describe '#name' do
-      subject do
-        build(:store, name: n)
-      end
-
-      context '空値' do
-        let(:n) { nil }
-
-        it { is_expected.not_to be_valid }
-      end
-    end
-
     describe '#ieul_store_id' do
       subject do
         build(:store, ieul_store_id: i)

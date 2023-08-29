@@ -4,7 +4,7 @@ class CityController < ApplicationController
   before_action :set_city, only: %i[show]
 
   def show
-    @stores = Store.where(city: @city)
+    @stores = @city.stores
 
     @latest_public_reviews = []
     @stores.each do |store|
