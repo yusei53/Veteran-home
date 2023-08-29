@@ -27,4 +27,26 @@ class AssessmentForm
   attribute :property_room_plan, :integer
   attribute :property_constructed_year, :integer
   # << property info <<
+
+  # >> validation >>
+  validates :user_name, presence: true, length: { maximum: 32 }, user_name: true
+  validates :user_name_kana, presence: true, length: { maximum: 64 }, user_name: true
+  validates :user_tel, presence: true, length: { minimum: 10, maximum: 11 }
+  validates :user_email, presence: true, length: { maximum: 100 }, email: true
+  validates :company, presence: true
+  validates :branch, presence: true
+  validates :property_prefecture, presence: true
+  validates :property_city, presence: true
+  validates :property_address, presence: true
+  validates :property_type, presence: true, inclusion: { in: Property.all.map(&:id) }
+  validates :property_building_area_unit, presence: true, inclusion: { in: BuildingAreaUnit.all.map(&:id) }
+  validates :property_exclusive_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :property_land_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :property_building_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :property_floor_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :url_param, presence: true
+  validates :property_room_plan, presence: true, inclusion: { in: PropertyRoomPlan.all.map(&:id) }
+  validates :property_constructed_year, presence: true,
+                                        numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  # << validation <<
 end
