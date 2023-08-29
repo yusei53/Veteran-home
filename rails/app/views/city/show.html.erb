@@ -1,27 +1,32 @@
-<%= render "areas/area" %>
-  
-  <% @stores.each do |store| %>
-        <div class="col-4">
-        <div><%= store.company.name %><%= store.name %></div>
+<h2 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h2>
+
+<% @latest_public_reviews.each do |review| %>
+<a class="store-card" href="/stores/<%=review.original_review.store.id%>">
+  <div class="card mt-5">
+    <div class="card-body mt-4 ms-4">
+      <div class="d-flex">
+        <div class="w-25">
+        <div class="mb-5">
+          <div><%= review.original_review.store.company.name %><%= review.original_review.store.name %></div>
+          <div>評価 ★<%=review.score_store%></div>
         </div>
-  <% end %>
-
-<% @latest_public_reviews.each do |review|%>
-
-<div class="card mb-3" style="max-width: 80%;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <p><%=review.original_review.store.company.name%></p>
-      <p>評価 ★<%=review.score_store%></p>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text"><%=review.reason_decision%></p>
+          <div>会社の決め手 : </div>
+        </div>
+        <div class="ms-5">  
+          <div>営業時間 : <%= review.original_review.store.open_time%></div>
+          <div>定休日 : <%= review.original_review.store.holiday%></div>
+          <div>住所 : <%= review.original_review.store.city.prefecture.name%><%= review.original_review.store.city.name%><%= review.original_review.store.address%></div>
+          <div class="mt-4">
+          <div><%= review.reason_decision%></div>
+        </div>
+        </div>
       </div>
-    </div>
+      </div>
   </div>
-</div>
+  </a>
+<% end %>
 
-<%end%>
+<section class="mt-5 mb-5"><%= render "areas/area" %></section>
+
+
 
