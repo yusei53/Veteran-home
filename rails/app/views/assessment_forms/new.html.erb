@@ -3,6 +3,7 @@
     
 
     <%= form_with(model: @form, url: assessment_forms_url, local: true) do |f| %>
+        <%= render "assessment_forms/api_error"%>
         <%=render "assessment_forms/form_error" %>
 
         <%=f.label :user_name, "お名前" %>

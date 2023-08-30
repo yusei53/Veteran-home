@@ -21,6 +21,7 @@ class AssessmentFormsController < ApplicationController
     @form = AssessmentForm.new(form_params)
     @form.valid?
 
+    @is_bad_status = false # APIからのレスポンスがBADじゃないか？
     if @form.errors.any?
       render 'new', status: :unprocessable_entity
     else
@@ -43,6 +44,7 @@ class AssessmentFormsController < ApplicationController
         redirect_to '/assessment_forms/thanks'
 
       else
+        @is_bad_status = true
         render 'new', status: :unprocessable_entity
 
       end
