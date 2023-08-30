@@ -1,3 +1,5 @@
+<% if @latest_public_reviews.length == 0 %><% noindex %><% end %>
+
 <h2 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h2>
 
 <% @latest_public_reviews.each do |review| %>

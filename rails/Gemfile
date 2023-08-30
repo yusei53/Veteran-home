@@ -89,3 +89,6 @@ gem 'daru'
 gem 'active_hash'
 
 gem 'ruby-progressbar'
+
+# metaタグ設定用のgem
+gem 'meta-tags'
