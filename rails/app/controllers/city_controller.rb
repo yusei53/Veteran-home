@@ -6,6 +6,8 @@ class CityController < ApplicationController
   def show
     @stores = @city.stores
 
+    session[:assessment_city]=@city #パンクズにどこから来たかが必要なので一時保存
+
     @latest_public_reviews = []
     @stores.each do |store|
       latest_original_review = OriginalReview.where(stores: store).order(created_at: :desc).first

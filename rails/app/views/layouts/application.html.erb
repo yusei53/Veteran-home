@@ -12,7 +12,10 @@
 
   <body>
   <%= render "layouts/header" %>
+  <%= breadcrumbs separator: " &rsaquo; " %>
   <div class="container">
+
+    
     <%= yield %>
   </div>
   </body>

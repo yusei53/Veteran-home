@@ -1,16 +1,1 @@
-
-<div class="card mt-3">
-  <div class="card-body">
-    <div class="custom-grid">
-      <% @cities.each do |city| %>
-        <div class="col-4">
-          <a href="/<%=@prefecture.id%>/<%=city.id%>" class="card-link"><%= city.name %></a>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
 <%= render "areas/area"%>
-
