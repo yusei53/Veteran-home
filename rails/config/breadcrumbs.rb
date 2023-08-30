@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 
 crumb :pref_show do |pref|
-  link "#{pref.name}", "/areas/#{pref.id}"
+  link pref.name.to_s, "/areas/#{pref.id}"
 end
 
 crumb :city_show do |city|
@@ -9,14 +10,14 @@ crumb :city_show do |city|
 end
 
 crumb :store_show do |store|
-  assessment_city=City.find(session[:assessment_city]["id"])
-  store_name=!store.name.nil? ? store.name : store.company.name
-  link "#{store_name}", store_path(store)
+  assessment_city = City.find(session[:assessment_city]['id'])
+  store_name = store.name.nil? ? store.company.name : store.name
+  link store_name.to_s, store_path(store)
   parent :city_show, assessment_city
 end
 
 crumb :review_show do |review|
-  link "口コミ詳細", review_path(review)
+  link '口コミ詳細', review_path(review)
   parent :store_show, review.original_review.store
 end
 

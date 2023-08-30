@@ -6,7 +6,7 @@ class CityController < ApplicationController
   def show
     @stores = @city.stores
 
-    session[:assessment_city]=@city #パンクズにどこから来たかが必要なので一時保存
+    session[:assessment_city] = @city # パンクズにどこから来たかが必要なので一時保存
 
     @latest_public_reviews = []
     @stores.each do |store|
