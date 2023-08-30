@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   mount KomachiHeartbeat::Engine => '/ops'
 
+  root 'top#index'
+
   resources :areas, :stores, :reviews, only: [:show]
   resources :areas do
     resources :city
