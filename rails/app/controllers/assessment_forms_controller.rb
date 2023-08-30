@@ -18,23 +18,38 @@ class AssessmentFormsController < ApplicationController
 
     form_params = permit_form_params.to_hash.symbolize_keys # これは店舗や市区が文字列のままだからidに変換しないといけない
 
-    # >> 文字列をIDに変換 >>
-    company_instance = Company.find_by(name: form_params[:company])
-    branch_id = Store.find_by(company: company_instance).ieul_store_id
-    property_city_id = City.find_by!(name: form_params[:property_city]).city_id
-    # >> 文字列をIDに変換 >>
+    @form = AssessmentForm.new(form_params)
+    @form.valid?
 
-    body = form_params.dup
-    body.delete(:branch) # 店舗名の文字列はいらないから捨てる
-    body.delete(:company) # 企業名もいらないから捨てる
-    body[:branch_id] = branch_id
-    body[:property_city] = property_city_id
+    @is_bad_status = false # APIからのレスポンスがBADじゃないか？
+    if @form.errors.any?
+      render 'new', status: :unprocessable_entity
+    else
 
-    response = client.post(url, body)
+      # >> 文字列をIDに変換 >>
+      company_instance = Company.find_by(name: form_params[:company])
+      branch_id = Store.find_by(company: company_instance).ieul_store_id
+      property_city_id = City.find_by!(name: form_params[:property_city]).city_id
+      # >> 文字列をIDに変換 >>
 
-    return unless response.status == 200
+      body = form_params.dup
+      body.delete(:branch) # 店舗名の文字列はいらないから捨てる
+      body.delete(:company) # 企業名もいらないから捨てる
+      body[:branch_id] = branch_id
+      body[:property_city] = property_city_id
 
-    redirect_to '/assessment_forms/thanks'
+      response = client.post(url, body)
+
+      if response.status == 200
+        redirect_to '/assessment_forms/thanks'
+
+      else
+        @is_bad_status = true
+        render 'new', status: :unprocessable_entity
+
+      end
+
+    end
   end
 
   private
@@ -57,7 +72,8 @@ class AssessmentFormsController < ApplicationController
       :user_email,
       :user_name,
       :user_name_kana,
-      :user_tel
+      :user_tel,
+      :property_prefecture
     )
   end
 end

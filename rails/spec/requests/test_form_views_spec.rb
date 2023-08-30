@@ -17,18 +17,14 @@ RSpec.describe 'TestFormViews' do
       store=FactoryBot.create(:store)
       city=FactoryBot.create(:city)
 
-      params = {"authenticity_token"=>"[FILTERED]", 
-        "assessment_form"=>{
-          "user_name"=>"", "user_name_kana"=>"", 
-          "user_tel"=>"", "user_email"=>"", 
-          "company"=>store.company.name, "branch"=>"", 
-          "property_prefecture"=>"", "property_city"=>city.name, 
-          "property_address"=>"", "property_type"=>"0", 
-          "property_building_area_unit"=>"1", "property_exclusive_area"=>"", 
-          "property_land_area"=>"", "property_building_area"=>"", 
-          "property_floor_area"=>"", "url_param"=>"beteran-sumai", 
-          "property_room_plan"=>"1", "property_constructed_year"=>""
-          }, "commit"=>"査定依頼する"}
+      forms = FactoryBot.build(:assessment_form).attributes.symbolize_keys
+      forms[:company]=store.company.name
+      forms[:branch]=store.name
+      forms[:property_city]=city.name
+      forms[:property_prefecture]=city.prefecture.name
+
+      params={"authenticity_token"=>"[FILTERED]", "assessment_form"=>forms,"commit"=>"査定依頼する"}
+
       post('/assessment_forms', params:params)
       expect(response).to redirect_to('/assessment_forms/thanks')
     end
