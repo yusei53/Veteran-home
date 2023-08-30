@@ -1,11 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="assessment-forms"
 export default class extends Controller {
-  greet() {
+  connect() {
     console.log(11111)
   }
-
-  filter_city(){
-    prefecture_box=
+  greet() {
+    console.log(11111)
   }
 }

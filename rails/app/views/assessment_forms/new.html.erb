@@ -2,6 +2,20 @@
   <div class="col-md-6 col-md-offset-3 custom-margin-top">
     
 
+    <div data-controller="hello">
+    <select data-action="change->hello#greet" id="">
+      <div>
+        <input hidden value={6} />
+        <option value={660}>東京都</option>
+      </div>
+      <div>
+        <input hidden value={6} />
+        <option value={660}>東京都</option>
+      </div>
+      <option>神奈川県</option>
+      <option>111j</option>
+      <option>111j</option>
+    </select>
     <%= form_with(model: @form, url: assessment_forms_url, local: true) do |f| %>
         <%= render "assessment_forms/api_error"%>
         <%=render "assessment_forms/form_error" %>
@@ -25,7 +39,9 @@
         <%=f.text_field :branch, placeholder: "店舗名(ない場合は空白)", class: 'form-control'%>
 
         <%=f.label :property_prefecture, "物件の所在" %>
-        <%=f.text_field :property_prefecture,placeholder:"都道府県", class: 'form-control'%>
+        <%#=f.text_field :property_prefecture,placeholder:"都道府県", class: 'form-control'%>
+        <%=f.collection_select(:prefecture, Prefecture.all, :id, :name, {},{class:"form-control"}) %>
+
 
         <%=f.text_field :property_city,placeholder:"市区", class: 'form-control'%>
 
@@ -62,6 +78,7 @@
         </div>
 
     <% end %>
+    </div>
 
   </div>
 </div>
