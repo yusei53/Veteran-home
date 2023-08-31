@@ -113,6 +113,9 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gretel (4.5.0)
+      actionview (>= 5.1, < 7.1)
+      railties (>= 5.1, < 7.1)
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -318,6 +321,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  gretel
   httpclient
   importmap-rails
   jbuilder
