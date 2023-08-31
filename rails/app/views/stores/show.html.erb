@@ -1,8 +1,6 @@
 
 <%# ===店舗ページに直リンクで飛んで来た場合は、表示している店舗の査定可能エリアの１つ目をパンクズに表示する=== %>
-<%if session[:assessment_city].nil?%>
-  <%session[:assessment_city]=@store.cities[0].attributes%>
-<%elsif !@store.cities.map{|city| city.attributes["id"]}.include?(session[:assessment_city]["id"]) %>
+<%if session[:assessment_city].nil? or !@store.cities.map{|city| city.attributes["id"]}.include?(session[:assessment_city]["id"]) %>
   <%session[:assessment_city]=@store.cities[0].attributes%>
 <%end%>
 <%# ===%>
