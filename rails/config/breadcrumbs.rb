@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
+crumb :root_show do
+  link 'home', root_path
+end
+
 crumb :pref_show do |pref|
   link pref.name.to_s, "/areas/#{pref.id}"
+  parent :root_show
 end
 
 crumb :city_show do |city|
