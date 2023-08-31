@@ -25,20 +25,25 @@
           <%=f.email_field :user_email, class: 'form-control'%>
 
           <%=f.label :property_prefecture, "物件の所在" %>
-          <%=f.collection_select(:prefecture, Prefecture.all, :id, :name, {},{
-            class:"form-control",
-            data:{
-              action:"change->hello#filter_city_and_store",
-              hello_target:"prefecture",
-              },
-            }) %>
+          <%=f.collection_select(:prefecture, Prefecture.all, :id, :name, 
+            {prompt: "都道府県を選択してください"},
+            { class:"form-control",
+              data:{
+                action:"change->hello#filter_city_and_store",
+                hello_target:"prefecture",
+                },
+              }) %>
 
-          <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[city]" id="assessment_form_city"></select>
+          <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[city]" id="assessment_form_city">
+            <option value=-1 >市区町村を選択してください</option>
+          </select>
           <%=f.text_field :property_address,placeholder:"市区以下の住所", class: 'form-control'%>
 
           <%=f.label :company, "査定依頼店舗" %>
 
-          <select class="form-control" data-hello-target="store" name="assessment_form[branch]" id="assessment_form_branch"></select>
+          <select class="form-control" data-hello-target="store" name="assessment_form[branch]" id="assessment_form_branch">
+            <option value=-1>店舗を選択してください</option>
+          </select>
 
           <%=f.label :property_type, "物件種別"%>
           <%=f.collection_select(:property_type, Property.all, :id, :name, {},{class:"form-control"}) %>
