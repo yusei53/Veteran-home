@@ -1,6 +1,8 @@
+
 <% breadcrumb :city_show, @city %>
 
-<h2 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h2>
+<h1 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h1>
+
 
 <% @latest_public_reviews.each do |review| %>
 <a class="store-card" href="/stores/<%=review.original_review.store.id%>">
