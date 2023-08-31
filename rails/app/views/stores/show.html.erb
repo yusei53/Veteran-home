@@ -1,3 +1,4 @@
+<% breadcrumb :store_show, @store %>
 <% if @public_reviews.length == 0 %>
   <% noindex %>
 <% end %>
@@ -78,3 +79,6 @@
     </section>
   <% end %>
 </article>
+
+<%= render "layouts/form_button"%>
+
