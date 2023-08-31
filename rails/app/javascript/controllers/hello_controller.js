@@ -45,6 +45,9 @@ export default class extends Controller {
   filter_store(city_id){
     this.storeTarget.innerHTML="";
 
+    console.log("cityid")
+    console.log(city_id)
+
     var assessment_store_ids=this.assessmentareasValue.filter((area)=>{
       return area.city_id==city_id;
     }).map((area)=>{
@@ -80,10 +83,11 @@ export default class extends Controller {
         var name=assessment_companies[i].name+" "+assessment_stores[i].name;
       }
       
-      var option=document.
+      var option=document.createElement("option");
+      option.text=name;
+      option.value=assessment_stores[i].id;
+      this.storeTarget.appendChild(option);
     }
-
-    
    
   }
 
