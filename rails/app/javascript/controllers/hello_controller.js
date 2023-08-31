@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import assessment_form_controller from "./assessment_form_controller";
 
 export default class extends Controller {
 

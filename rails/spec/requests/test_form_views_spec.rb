@@ -18,10 +18,9 @@ RSpec.describe 'TestFormViews' do
       city=FactoryBot.create(:city)
 
       forms = FactoryBot.build(:assessment_form).attributes.symbolize_keys
-      forms[:company]=store.company.name
-      forms[:branch]=store.name
-      forms[:property_city]=city.name
-      forms[:property_prefecture]=city.prefecture.name
+      forms[:branch_id]=store.id
+      forms[:property_city_id]=city.id
+      forms[:property_prefecture_id]=city.prefecture.id
 
       params={"authenticity_token"=>"[FILTERED]", "assessment_form"=>forms,"commit"=>"査定依頼する"}
 
