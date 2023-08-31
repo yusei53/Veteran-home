@@ -17,11 +17,9 @@ class AssessmentForm
   attribute :property_city_id, :integer # 物件の市区
   attribute :property_address, :string # 物件の詳しい住所
   attribute :property_type, :integer
-  # attribute :property_building_area_unit, :integer
   attribute :property_exclusive_area, :float
   attribute :property_land_area, :float
   attribute :property_building_area, :float
-  # attribute :property_floor_area, :float
   attribute :url_param, :string
   attribute :property_room_plan, :integer
   attribute :property_constructed_year, :integer
@@ -37,11 +35,9 @@ class AssessmentForm
   validates :property_city_id, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :property_address, presence: true
   validates :property_type, presence: true, inclusion: { in: Property.all.map(&:id) }
-  # validates :property_building_area_unit, presence: true, inclusion: { in: BuildingAreaUnit.all.map(&:id) }
   validates :property_exclusive_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :property_land_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :property_building_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  # validates :property_floor_area, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :url_param, presence: true
   validates :property_room_plan, presence: true, inclusion: { in: PropertyRoomPlan.all.map(&:id) }
   validates :property_constructed_year, presence: true,
