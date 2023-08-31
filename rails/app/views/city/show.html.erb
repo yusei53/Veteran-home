@@ -1,5 +1,5 @@
-
 <% breadcrumb :city_show, @city %>
+<% if @latest_public_reviews.length == 0 %><% noindex %><% end %>
 
 <h1 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h1>
 
