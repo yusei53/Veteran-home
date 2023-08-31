@@ -24,8 +24,8 @@
           <%=f.label :user_email, "メールアドレス" %>
           <%=f.email_field :user_email, class: 'form-control'%>
 
-          <%=f.label :property_prefecture, "物件の所在" %>
-          <%=f.collection_select(:prefecture, Prefecture.all, :id, :name, 
+          <%=f.label :property_prefecture_id, "物件の所在" %>
+          <%=f.collection_select(:prefecture_id, Prefecture.all, :id, :name, 
             {prompt: "都道府県を選択してください"},
             { class:"form-control",
               data:{
@@ -34,34 +34,28 @@
                 },
               }) %>
 
-          <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[city]" id="assessment_form_city">
+          <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[property_city_id]" id="assessment_form_property_city_id">
             <option value=-1 >市区町村を選択してください</option>
           </select>
           <%=f.text_field :property_address,placeholder:"市区以下の住所", class: 'form-control'%>
 
           <%=f.label :company, "査定依頼店舗" %>
 
-          <select class="form-control" data-hello-target="store" name="assessment_form[branch]" id="assessment_form_branch">
+          <select class="form-control" data-hello-target="store" name="assessment_form[branch_id]" id="assessment_form_branch_id">
             <option value=-1>店舗を選択してください</option>
           </select>
 
           <%=f.label :property_type, "物件種別"%>
           <%=f.collection_select(:property_type, Property.all, :id, :name, {},{class:"form-control"}) %>
 
-          <%=f.label :property_building_area_unit, "建物面積単位"%>
-          <%=f.collection_select(:property_building_area_unit, BuildingAreaUnit.all, :id, :name, {},{class:"form-control"}) %>
-
           <%=f.label :property_exclusive_area, "専有面積"%>
-          <%=f.text_field :property_exclusive_area,placeholder: "選択した面積単位で入力してください" , class: 'form-control'%>
+          <%=f.text_field :property_exclusive_area,placeholder: "[m2]" , class: 'form-control'%>
 
           <%=f.label :property_land_area, "土地面積" %>
-          <%=f.text_field :property_land_area,placeholder: "選択した面積単位で入力してください", class: 'form-control'%>
+          <%=f.text_field :property_land_area,placeholder: "[m2]", class: 'form-control'%>
 
           <%=f.label :property_building_area, "建物面積" %>
-          <%=f.text_field :property_building_area,placeholder: "選択した面積単位で入力してください", class: 'form-control'%>
-
-          <%=f.label :property_floor_area, "延床面積" %>
-          <%=f.text_field :property_floor_area,placeholder: "選択した面積単位で入力してください", class: 'form-control'%>
+          <%=f.text_field :property_building_area,placeholder: "[m2]", class: 'form-control'%>
 
           <%=f.hidden_field :url_param, value: "beteran-sumai", class: 'form-control'%>
 

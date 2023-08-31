@@ -133,13 +133,13 @@ RSpec.describe 'AssessmentForm' do
       end
     end
 
-    describe '#company' do
+    describe '#branch_id' do
       subject do
-        build(:assessment_form, company: param)
+        build(:assessment_form, branch_id: param)
       end
 
-      context '正常ケース：文字列' do
-        let(:param) { Faker::Company.name }
+      context '正常ケース:整数値' do
+        let(:param) { Faker::Number.number(digits: 2) }
 
         it { is_expected.to be_valid }
       end
@@ -151,13 +151,13 @@ RSpec.describe 'AssessmentForm' do
       end
     end
 
-    describe '#branch' do
+    describe '#property_prefecture_id' do
       subject do
-        build(:assessment_form, branch: param)
+        build(:assessment_form, property_prefecture_id: param)
       end
 
-      context '正常ケース:文字列' do
-        let(:param) { Faker::Company.name }
+      context '正常ケース:整数値' do
+        let(:param) { Faker::Number.number(digits: 2) }
 
         it { is_expected.to be_valid }
       end
@@ -169,31 +169,13 @@ RSpec.describe 'AssessmentForm' do
       end
     end
 
-    describe '#property_prefecture' do
+    describe '#property_city_id' do
       subject do
-        build(:assessment_form, property_prefecture: param)
+        build(:assessment_form, property_city_id: param)
       end
 
-      context '正常ケース:文字列' do
-        let(:param) { Faker::Address.city }
-
-        it { is_expected.to be_valid }
-      end
-
-      context '空値' do
-        let(:param) { nil }
-
-        it { is_expected.not_to be_valid }
-      end
-    end
-
-    describe '#property_city' do
-      subject do
-        build(:assessment_form, property_city: param)
-      end
-
-      context '正常ケース:文字列' do
-        let(:param) { Faker::Address.city }
+      context '正常ケース:整数値' do
+        let(:param) { Faker::Number.number(digits: 2) }
 
         it { is_expected.to be_valid }
       end
@@ -252,35 +234,6 @@ RSpec.describe 'AssessmentForm' do
       end
     end
 
-    describe '#property_building_area_unit' do
-      subject do
-        build(:assessment_form, property_building_area_unit: param)
-      end
-
-      BuildingAreaUnit.all.map(&:id).each do |building_area_unit_case|
-        context '正常ケース:定義enum値' do
-          let(:param) { building_area_unit_case }
-
-          it { is_expected.to be_valid }
-        end
-      end
-      context '空値' do
-        let(:param) { nil }
-
-        it { is_expected.not_to be_valid }
-      end
-
-      property_building_area_unit_cases = BuildingAreaUnit.all.map(&:id)
-      property_building_area_unit_min = property_building_area_unit_cases.min
-      property_building_area_unit_cases.each do |property_building_area_unit_case|
-        context '定義enum外の値' do
-          let(:param) { property_building_area_unit_min - 1 - property_building_area_unit_case }
-
-          it { is_expected.not_to be_valid }
-        end
-      end
-    end
-
     describe '#property_exclusive_area' do
       subject do
         build(:assessment_form, property_exclusive_area: param)
@@ -332,30 +285,6 @@ RSpec.describe 'AssessmentForm' do
     describe '#property_building_area' do
       subject do
         build(:assessment_form, property_building_area: param)
-      end
-
-      context '正常ケース:小数値' do
-        let(:param) { Faker::Number.decimal(l_digits: 3, r_digits: 3) }
-
-        it { is_expected.to be_valid }
-      end
-
-      context '空値' do
-        let(:param) { nil }
-
-        it { is_expected.not_to be_valid }
-      end
-
-      context '負値' do
-        let(:param) { -1 }
-
-        it { is_expected.not_to be_valid }
-      end
-    end
-
-    describe '#property_floor_area' do
-      subject do
-        build(:assessment_form, property_floor_area: param)
       end
 
       context '正常ケース:小数値' do
