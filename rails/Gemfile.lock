@@ -113,6 +113,9 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gretel (4.5.0)
+      actionview (>= 5.1, < 7.1)
+      railties (>= 5.1, < 7.1)
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -140,6 +143,8 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    meta-tags (2.18.0)
+      actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.1)
@@ -316,10 +321,12 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  gretel
   httpclient
   importmap-rails
   jbuilder
   komachi_heartbeat (~> 2.5)
+  meta-tags
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.6)

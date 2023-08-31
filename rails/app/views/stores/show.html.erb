@@ -1,3 +1,6 @@
+<% breadcrumb :store_show, @store %>
+<% if @public_reviews.length == 0 %><% noindex %><% end %>
+
 <div class="custom-title mb-5">
 <h1><%= @company.name %>
 <%= !@store.name.nil? ? @store.name : "" %>
@@ -78,3 +81,5 @@
 
 
 <% end %>
+
+<%= render "layouts/form_button"%>

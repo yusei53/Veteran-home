@@ -1,52 +1,55 @@
+<% breadcrumb :review_show, @review %>
+
 <div class="d-flex justify-content-center">
 <h1><%= @review.headline %></h1>
 </div>
 
   <div class=" f-review-page">
   <div class="card-body">
-    <div class="card-text">売却した不動産会社名 : <%= !@store.name.nil? ? @store.name : @store.company.name %></div>
+    <div class="card-text">売却した不動産会社名 :<%= @company.name %><%= !@store.name.nil? ? @store.name : @store.company.name %></div>
     <div class="card-text">住所 :  <%= @detail_review.city.prefecture.name %><%= @detail_review.city.name %></div>
     <div class="card-text">売却の理由 :  <%= @reason_sale.name %></div>
     <div class="card-text">売却経験 :  <%= @num_sale.name %></div>
   </div>
 
     <%if !@review.anxiety.blank?%>
- <div class="card-body">
-    <h4 class="card-title">売却時に不安だったこと</h4>
+ <div class="card-body mt-5 mb-5">
+    <div class="card-title mini-title">売却時に不安だったこと</div>
     <div class="card-text"><%= @review.anxiety %></div>
+    </div>
     <%end%>
 
   <%if !@review.reason_decision.blank?%>
-  <div class="card-body">
-    <h4 class="card-title">この会社に決めた決め手</h4>
+  <div class="card-body mt-5 mb-5">
+    <div class="card-title mini-title">この会社に決めた決め手</div>
     <div class="card-text"><%= @review.reason_decision %></div>
   </div>
   <%end%>
 
   <%if !@review.reason_score.blank?%>
-  <div class="card-body">
-    <h4 class="card-title">不動産会社の対応満足度: ★<%= @review.score_store %></h4>
+  <div class="card-body mt-5 mb-5">
+    <div class="card-title mini-title">不動産会社の対応満足度: ★<%= @review.score_store %></div>
     <div class="card-text"><%= @review.reason_score %></div>
   </div>
 <%end%>
 
   <%if !@review.advice.blank?%>
-  <div class="card-body">
-    <h4 class="card-title">今後売却するひとへのアドバイス</h4>
+  <div class="card-body mt-5 mb-5">
+    <div class="card-title mini-title">今後売却するひとへのアドバイス</div>
     <div class="card-text"><%= @review.advice %></div>
   </div>
   <%end%>
 
 <%if !@review.improvement.blank?%>
-  <div class="card-body">
-    <h4 class="card-title">不動産会社に改善してほしい点</h4>
+  <div class="card-body mt-5 mb-5">
+    <div class="card-title mini-title">不動産会社に改善してほしい点</div>
     <div class="card-text"><%= @review.improvement %></div>
   </div>
   <% end %>
 
 
-  <div class="card-body">
-    <h4 class="card-title">売却時期と価格について</h4>
+  <div class="card-body mt-5 mb-5">
+    <div class="card-title mini-title">売却時期と価格について</div>
     <div class="card-text">
 <table>
   <tr>
@@ -78,8 +81,8 @@
     </div>
   </div>
 
-    <div class="card-body">
-    <div class="card-text">企業名 : <%= @company.name %></div>
+    <div class="card-body mt-5 mb-5">
+    <div class="card-text">企業名 : <%= @company.name %><%= !@store.name.nil? ? @store.name : @store.company.name %></div>
     <div class="card-text">郵便番号 :  <%= @store.post_code %></div>
     <div class="card-text">住所 :  <%= @detail_review.city.prefecture.name %><%= @detail_review.city.name %><%= @detail_review.store.address %></div>
     <div class="card-text">電話番号 :  <%= @store.phone_number %></div>
@@ -88,3 +91,5 @@
     <div class="card-text">定休日 :  <%= @store.holiday %></div>
   </div>
     </div>
+
+<%= render "layouts/form_button"%>

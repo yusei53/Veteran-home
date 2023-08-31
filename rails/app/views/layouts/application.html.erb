@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rail</title>
+    <%= display_meta_tags site: "ベテランすまい" %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,11 @@
 
   <body>
   <%= render "layouts/header" %>
+
+  <%= breadcrumbs separator: " &rsaquo; " %>
   <div class="container">
+
+    
     <%= yield %>
   </div>
   </body>

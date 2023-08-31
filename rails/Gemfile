@@ -89,3 +89,7 @@ gem 'daru'
 gem 'active_hash'
 
 gem 'ruby-progressbar'
+
+gem 'gretel'
+
+gem 'meta-tags'
