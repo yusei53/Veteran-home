@@ -1,76 +1,110 @@
-<div class="d-flex align-items-center justify-content-center">
-  <div class="col-md-6 col-md-offset-3 custom-margin-top">
-    
+  <section class="custom-title mb-1">
+    <h1>
+      査定依頼フォーム
+    </h1>
+  </section>
 
-    <div data-controller="hello" 
-    data-hello-cities-value=<%=City.all.to_json%> 
-    data-hello-assessmentareas-value=<%=AssessmentArea.all.to_json%>
-    data-hello-stores-value=<%=Store.joins(:company).select("companies.name AS company_name,stores.*").to_json%>
-    >
-    
-      <%= form_with(model: @form, url: assessment_forms_url, local: true) do |f| %>
-          <%= render "assessment_forms/api_error"%>
-          <%=render "assessment_forms/form_error" %>
+<section>
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="col-md-6 col-md-offset-3 custom-margin-top">
+      
 
-          <%=f.label :user_name, "お名前" %>
-          <%=f.text_field :user_name, class: 'form-control'%>
+      <div data-controller="hello" 
+      data-hello-cities-value=<%=City.all.to_json%> 
+      data-hello-assessmentareas-value=<%=AssessmentArea.all.to_json%>
+      data-hello-stores-value=<%=Store.joins(:company).select("companies.name AS company_name,stores.*").to_json%>
+      >
+      
+        <%= form_with(model: @form, url: assessment_forms_url, local: true) do |f| %>
+            <%= render "assessment_forms/api_error"%>
+            <%=render "assessment_forms/form_error" %>
 
-          <%=f.label :user_name_kana, "ふりがな" %>
-          <%=f.text_field :user_name_kana, class: 'form-control'%>
-          
-          <%=f.label :phome_number, "電話番号" %>
-          <%=f.telephone_field :user_tel, class: 'form-control'%>
+            <div class="assessment-form">
+              <%=f.label :user_name, "お名前" %>
+              <%=f.text_field :user_name,placeholder: "山田 花子", class: 'form-control'%>
+            </div>
 
-          <%=f.label :user_email, "メールアドレス" %>
-          <%=f.email_field :user_email, class: 'form-control'%>
+            <div class="assessment-form">
+              <%=f.label :user_name_kana, "ふりがな" %>
+              <%=f.text_field :user_name_kana,placeholder: "やまだ はなこ", class: 'form-control'%>
+            </div>
 
-          <%=f.label :property_prefecture_id, "物件の所在" %>
-          <%=f.collection_select(:prefecture_id, Prefecture.all, :id, :name, 
-            {prompt: "都道府県を選択してください"},
-            { class:"form-control",
-              data:{
-                action:"change->hello#filter_city_and_store",
-                hello_target:"prefecture",
-                },
-              }) %>
+            <div class="assessment-form">
+              <%=f.label :phome_number, "電話番号" %>
+              <%=f.telephone_field :user_tel,placeholder: "01234567890", class: 'form-control'%>
+            </div>
 
-          <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[property_city_id]" id="assessment_form_property_city_id">
-            <option value=-1 >市区町村を選択してください</option>
-          </select>
-          <%=f.text_field :property_address,placeholder:"市区以下の住所", class: 'form-control'%>
+            <div class="assessment-form">
+              <%=f.label :user_email, "メールアドレス" %>
+              <%=f.email_field :user_email,placeholder: "yamada.hanako@gmail.com", class: 'form-control'%>
+            </div>
 
-          <%=f.label :company, "査定依頼店舗" %>
+            <div class="assessment-form">
+              <%=f.label :property_prefecture_id, "物件の所在" %>
+              <%=f.collection_select(:property_prefecture_id, Prefecture.all, :id, :name, 
+                {prompt: "都道府県を選択してください"},
+                { class:"form-control",
+                  data:{
+                    action:"change->hello#filter_city_and_store",
+                    hello_target:"prefecture",
+                    },
+                  }) %>
 
-          <select class="form-control" data-hello-target="store" name="assessment_form[branch_id]" id="assessment_form_branch_id">
-            <option value=-1>店舗を選択してください</option>
-          </select>
+              <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[property_city_id]" id="assessment_form_property_city_id">
+                <option value=-1 >市区町村を選択してください</option>
+              </select>
+              <%=f.text_field :property_address,placeholder:"市区以下の住所", class: 'form-control'%>
+            </div>
 
-          <%=f.label :property_type, "物件種別"%>
-          <%=f.collection_select(:property_type, Property.all, :id, :name, {},{class:"form-control"}) %>
+            <div class="assessment-form">
+              <%=f.label :company, "査定依頼店舗" %>
 
-          <%=f.label :property_exclusive_area, "専有面積"%>
-          <%=f.text_field :property_exclusive_area,placeholder: "m²" , class: 'form-control'%>
+              <select class="form-control" data-hello-target="store" name="assessment_form[branch_id]" id="assessment_form_branch_id">
+                <option value=-1>店舗を選択してください</option>
+              </select>
+            </div>
 
-          <%=f.label :property_land_area, "土地面積" %>
-          <%=f.text_field :property_land_area,placeholder: "m²", class: 'form-control'%>
+            <div class="assessment-form">
+              <%=f.label :property_type, "物件種別"%>
+              <%=f.collection_select(:property_type, Property.all, :id, :name, {},{class:"form-control"}) %>
+            </div>
 
-          <%=f.label :property_building_area, "建物面積" %>
-          <%=f.text_field :property_building_area,placeholder: "m²", class: 'form-control'%>
+            <div class="assessment-form">
+              <%=f.label :property_exclusive_area, "専有面積"%>
+              <%=f.text_field :property_exclusive_area,placeholder: "m²" , class: 'form-control'%>
+            </div>
 
-          <%=f.hidden_field :url_param, value: "beteran-sumai", class: 'form-control'%>
+            <div class="assessment-form">
+              <%=f.label :property_land_area, "土地面積" %>
+              <%=f.text_field :property_land_area,placeholder: "m²", class: 'form-control'%>
+            <div>
 
-          <%=f.label :property_room_plan, "間取り"%>
-          <%=f.collection_select(:property_room_plan, PropertyRoomPlan.all, :id, :name, {},{class:"form-control"}) %>
+            <div class="assessment-form">
+              <%=f.label :property_building_area, "建物面積" %>
+              <%=f.text_field :property_building_area,placeholder: "m²", class: 'form-control'%>
+            </div>
 
-          <%=f.label :property_constructed_year, "築年数" %>
-          <%=f.number_field :property_constructed_year, class: 'form-control'%>
+              <%=f.hidden_field :url_param, value: "beteran-sumai", class: 'form-control'%>
 
-        <div class="d-grid gap-2">
-          <%= f.submit "査定依頼する", class: "btn btn-primary form-control " %>
-        </div>
+            <div class="assessment-form">
+              <%=f.label :property_room_plan, "間取り"%>
+              <%=f.collection_select(:property_room_plan, PropertyRoomPlan.all, :id, :name, {},{class:"form-control"}) %>
+            </div>
 
-      <% end %>
+            <div class="assessment-form">
+              <%=f.label :property_constructed_year, "築年数" %>
+              <%=f.number_field :property_constructed_year, class: 'form-control', min:0%>
+            </div>
+
+            <div class="assessment-form">
+              <div class="d-grid gap-2">
+                <%= f.submit "査定依頼する", class: "btn btn-primary form-control"%>
+              </div>
+            </div>
+
+        <% end %>
+      </div>
+
     </div>
-
   </div>
-</div>
+</section>

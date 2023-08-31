@@ -65,7 +65,7 @@ export default class extends Controller {
       this.storeTarget.appendChild(option);
     }
 
-    if (this.storeTarget.childElementCount ==0 ){
+    if (this.storeTarget.childElementCount ==1 ){
       let option=document.createElement("option");
       option.text="査定可能な店舗がありません";
       option.value=-1;
