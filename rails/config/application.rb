@@ -15,6 +15,8 @@ module Rail
 
     # バリデータのパスを追記
     config.autoload_paths += Dir["#{config.root}/app/validators"]
+    # 日本語対応
+    config.i18n.default_locale = :ja
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
