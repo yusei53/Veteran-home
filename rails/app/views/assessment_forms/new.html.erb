@@ -4,9 +4,8 @@
 
     <div data-controller="hello" 
     data-hello-cities-value=<%=City.all.to_json%> 
-    data-hello-stores-value=<%=Store.all.to_json%>
     data-hello-assessmentareas-value=<%=AssessmentArea.all.to_json%>
-    data-hello-companies-value=<%=Company.all.to_json%>
+    data-hello-stores-value=<%=Store.joins(:company).select("companies.name AS company_name,stores.*").to_json%>
     >
     
       <%= form_with(model: @form, url: assessment_forms_url, local: true) do |f| %>
@@ -29,18 +28,15 @@
           <%=f.collection_select(:prefecture, Prefecture.all, :id, :name, {},{
             class:"form-control",
             data:{
-              action:"change->hello#filter",
+              action:"change->hello#filter_city_and_store",
               hello_target:"prefecture",
               },
             }) %>
 
-          <select class="form-control" data-hello-target="city" name="assessment_form[city]" id="assessment_form_city"></select>
+          <select class="form-control" data-action="change->hello#filter_store" data-hello-target="city" name="assessment_form[city]" id="assessment_form_city"></select>
           <%=f.text_field :property_address,placeholder:"市区以下の住所", class: 'form-control'%>
 
           <%=f.label :company, "査定依頼店舗" %>
-          <%#=f.text_field :company, placeholder: "企業名", class: 'form-control'%>
-
-          <%#=f.text_field :branch, placeholder: "店舗名(ない場合は空白)", class: 'form-control'%>
 
           <select class="form-control" data-hello-target="store" name="assessment_form[branch]" id="assessment_form_branch"></select>
 
