@@ -1,38 +1,36 @@
 <% breadcrumb :city_show, @city %>
-<% if @latest_public_reviews.length == 0 %><% noindex %><% end %>
+<article>
+  <% if @latest_public_reviews.length == 0 %>
+    <% noindex %>
+  <% end %>
+  
+  <h1 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h1>
 
-<h1 class="mt-5 mb-5"><%= @city.name %>は<%= @latest_public_reviews.length %>件の査定依頼可能な不動産が見つかりました↓</h1>
-
-
-<% @latest_public_reviews.each do |review| %>
-<a class="store-card" href="/stores/<%=review.original_review.store.id%>">
-  <div class="card mt-5">
-    <div class="card-body mt-4 ms-4">
-      <div class="d-flex">
-        <div class="w-25">
-
-        <div class="mb-5">
-          <div><%= review.original_review.store.company.name %><%= review.original_review.store.name %></div>
-          <div>評価 ★<%=review.score_store%></div>
+  <% @latest_public_reviews.each do |review| %>
+    <section class="card mt-5">
+      <a class="store-card" href="/stores/<%=review.original_review.store.id%>">
+        <div class="card-body mt-4 ms-4">
+          <div class="d-flex">
+            <div class="w-50">
+              <div class="mb-5">
+                <div><%= review.original_review.store.company.name %><%= review.original_review.store.name %></div>
+                <div>評価 ★<%=review.score_store%></div>
+              </div>
+              <div>会社の決め手 : </div>
+            </div>
+            <div class="ms-5">  
+              <div>営業時間 : <%= review.original_review.store.open_time%></div>
+              <div>定休日 : <%= review.original_review.store.holiday%></div>
+              <div>住所 : <%= review.original_review.store.city.prefecture.name%><%= review.original_review.store.city.name%><%= review.original_review.store.address%></div>
+              <div class="mt-4">
+                <div><%= review.reason_decision%></div>
+              </div>
+            </div>
+          </div>
         </div>
-          <div>会社の決め手 : </div>
-        </div>
+      </a>
+    </section>
+  <% end %>
 
-        <div class="ms-5">  
-          <div>営業時間 : <%= review.original_review.store.open_time%></div>
-          <div>定休日 : <%= review.original_review.store.holiday%></div>
-          <div>住所 : <%= review.original_review.store.city.prefecture.name%><%= review.original_review.store.city.name%><%= review.original_review.store.address%></div>
-          <div class="mt-4">
-          <div><%= review.reason_decision%></div>
-        </div>
-        </div>
-      </div>
-      </div>
-  </div>
-  </a>
-<% end %>
-
-<section class="mt-5 mb-5"><%= render "areas/area" %></section>
-
-
-
+  <section class="mt-5 mb-5"><%= render "areas/area" %></section>
+</article>
