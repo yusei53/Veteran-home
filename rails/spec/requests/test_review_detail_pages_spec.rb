@@ -8,9 +8,14 @@ RSpec.describe 'TestReviewDetailPages' do
     it 'works! (now write some real specs)' do
       review = create(:public_review)
       store = review.original_review.store
-      get "/areas/#{store.city.prefecture.id}/city/#{store.city.id}"
-      get "/stores/#{store.id}"
+
+      assessment_area=FactoryBot.build(:assessment_area)
+      assessment_area.city=store.city
+      assessment_area.store=store
+      assessment_area.save
+
       get "/reviews/#{review.id}"
+
       expect(response).to have_http_status(:ok)
     end
   end

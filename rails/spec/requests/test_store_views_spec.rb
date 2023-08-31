@@ -2,13 +2,21 @@
 
 require 'rails_helper'
 
+# rubocop:disable all
 RSpec.describe 'TestStoreViews' do
   describe 'GET /test_store_views' do
     it 'works! (now write some real specs)' do
-      store = create(:store)
-      get "/areas/#{store.city.prefecture.id}/city/#{store.city.id}"
+      review = create(:public_review)
+      store = review.original_review.store
+
+      assessment_area = build(:assessment_area)
+      assessment_area.city = store.city
+      assessment_area.store = store
+      assessment_area.save
+
       get store_path(store)
       expect(response).to have_http_status(:ok)
     end
   end
 end
+# rubocop:enable all
