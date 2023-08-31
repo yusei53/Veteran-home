@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 mt-3">
+    <div class="col-md-6 mt-3 mb-5">
       <div class="store-detail">
         <div><%= !@store.name.nil? ? @store.name : @store.company.name %>について</div>
         <div>企業名：<%= @store.company.name %></div>
@@ -60,13 +60,14 @@
 <article>
   <h4><%= !@store.name.nil? ? @store.name : @store.company.name %>で売却した人の口コミ （平均評価<%=@score_total%>）</h4>
   <% @public_reviews.each do |review| %>
-    <section class="card mb-3">
+    <section class="card mb-4 custom-store-border">
       <a class="store-card" href="/reviews/<%=review.id%>">
         <div class="card-body">
           <div class="d-flex">
             <h5 class="card-title"><%= review.headline %></h5>
             <h6 class="card-subtitle text-muted mt-1"> 対応満足度：★<%= review.score_contract %></h6>
           </div>
+          <div class="more-store-info">もっと見る</div>
           <p class="card-text"><%= review.reason_score %></p>
           <h6 class="card-subtitle mt-4 text-muted">
             成約価格<%= review.price_contract %>円

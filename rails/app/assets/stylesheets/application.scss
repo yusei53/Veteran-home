@@ -175,3 +175,57 @@ p {
     font-size: 30px;
   }
 
+  .custom-border {
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s ease;
+  
+    .more-info {
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0; /* 初期状態では非表示 */
+      transition: opacity 0.3s ease;
+    }
+  
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      transition: all 0.6s ease;
+  
+      .more-info {
+        opacity: 1; /* ホバー時に表示 */
+      }
+    }
+  }
+  
+  .custom-store-border {
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s ease;
+  
+    .more-store-info {
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0; /* 初期状態では非表示 */
+      transition: opacity 0.3s ease;
+    }
+  
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      transition: all 0.6s ease;
+  
+      .more-store-info {
+        opacity: 1; /* ホバー時に表示 */
+      }
+    }
+  }
+
