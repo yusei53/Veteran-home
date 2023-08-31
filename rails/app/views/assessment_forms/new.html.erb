@@ -49,13 +49,13 @@
           <%=f.collection_select(:property_type, Property.all, :id, :name, {},{class:"form-control"}) %>
 
           <%=f.label :property_exclusive_area, "専有面積"%>
-          <%=f.text_field :property_exclusive_area,placeholder: "[m2]" , class: 'form-control'%>
+          <%=f.text_field :property_exclusive_area,placeholder: "m²" , class: 'form-control'%>
 
           <%=f.label :property_land_area, "土地面積" %>
-          <%=f.text_field :property_land_area,placeholder: "[m2]", class: 'form-control'%>
+          <%=f.text_field :property_land_area,placeholder: "m²", class: 'form-control'%>
 
           <%=f.label :property_building_area, "建物面積" %>
-          <%=f.text_field :property_building_area,placeholder: "[m2]", class: 'form-control'%>
+          <%=f.text_field :property_building_area,placeholder: "m²", class: 'form-control'%>
 
           <%=f.hidden_field :url_param, value: "beteran-sumai", class: 'form-control'%>
 
