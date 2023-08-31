@@ -23,5 +23,6 @@ end
 
 crumb :review_show do |review|
   link '口コミ詳細', review_path(review)
+  # debugger
   parent :store_show, review.original_review.store
 end
