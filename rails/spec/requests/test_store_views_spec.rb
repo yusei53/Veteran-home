@@ -6,6 +6,7 @@ RSpec.describe 'TestStoreViews' do
   describe 'GET /test_store_views' do
     it 'works! (now write some real specs)' do
       store = create(:store)
+      get "/areas/#{store.city.prefecture.id}/city/#{store.city.id}"
       get store_path(store)
       expect(response).to have_http_status(:ok)
     end
