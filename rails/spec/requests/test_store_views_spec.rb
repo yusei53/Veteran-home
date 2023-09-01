@@ -14,6 +14,7 @@ RSpec.describe 'TestStoreViews' do
       assessment_area.store = store
       assessment_area.save
 
+      get "/areas/#{assessment_area.city.prefecture.id}/city/#{assessment_area.city.id}"
       get store_path(store)
       expect(response).to have_http_status(:ok)
     end

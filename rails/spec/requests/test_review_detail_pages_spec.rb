@@ -14,6 +14,7 @@ RSpec.describe 'TestReviewDetailPages' do
       assessment_area.store=store
       assessment_area.save
 
+      get "/areas/#{assessment_area.city.prefecture.id}/city/#{assessment_area.city.id}"
       get "/reviews/#{review.id}"
 
       expect(response).to have_http_status(:ok)
