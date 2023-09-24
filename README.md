@@ -1,3 +1,3 @@
-# 小和田
+# owata
 
 https://internship-c.sandbox.srv.speee.jp/
